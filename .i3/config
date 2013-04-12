@@ -151,32 +151,16 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
-
-    # Gentoo-like color scheme
-    colors {
-        background #000000
-        statusline #ffffff
-        separator #666666
-
-        focused_workspace     #7a5ada     #7a5ada     #ffffff
-        inactive_workspace    #45347b     #45347b     #ffffff
-        active_workspace      #333333     #333333     #ffffff
-        urgent_workspace      #D11931     #D11931     #ffffff
-    }
 }
 
 # -----------------
 # Personal Settings
 # -----------------
 
-# Gentoo-like color scheme
-client.focused             #7a5ada     #7a5ada     #ffffff
-client.focused_inactive    #45347b     #45347b     #ffffff
-client.unfocused           #333333     #333333     #ffffff
-client.urgent              #D11931     #D11931     #ffffff
+# No window titles or border edges
+new_window none
+hide_edge_borders none
 
-# Enable floating mode for all Steam windows
-for_window [class="Steam"] floating enable
-
-# Enable floating mode for Mumble
-for_window [class="Mumble"] floating enable
+# Automatically start Steam and assign it to workspace 10
+exec steam
+assign [class="Steam"] 10
