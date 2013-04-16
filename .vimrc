@@ -15,9 +15,9 @@ Bundle 'gmarik/vundle'
 " Bundle 'name/repoName'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-surround'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'vim-scripts/AutoComplPop'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'wincent/Command-T'
 
 " Repositories on Vim-Scripts
 " ---------------------------
@@ -53,6 +53,10 @@ let g:molokai_original = 0
 if has('gui_running')
     set guifont=Consolas\ 10
     set guioptions-=T
+    set guioptions-=l
+    set guioptions-=L
     set guioptions-=m
+    set guioptions-=M
     set guioptions-=r
+    set guioptions-=R
 endif
