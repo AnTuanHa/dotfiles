@@ -15,7 +15,7 @@ set $mod Mod1
 # is used in the bar {} block below. ISO 10646 = Unicode
 
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:DejaVu Sans Mono 10
+font pango:Droid Sans 10
 
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
