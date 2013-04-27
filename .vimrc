@@ -35,6 +35,10 @@ Bundle 'wincent/Command-T'
 filetype plugin indent on
 syntax on
 
+" Fixes delay after pressing ESC and then O
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Adds line numbers to the left side of the editor
 set number
 
 " Insert spaces instead of tabs
