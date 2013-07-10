@@ -14,7 +14,6 @@ Bundle 'gmarik/vundle'
 " ----------------------
 " Bundle 'name/repoName'
 Bundle 'tomasr/molokai'
-Bundle 'Pychimp/vim-luna'
 Bundle 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tomtom/tcomment_vim'
@@ -51,15 +50,8 @@ set shiftwidth=4
 set textwidth=80
 
 " Color Scheme
-if has('gui_running')
-    colorscheme luna
-else
-    colorscheme luna-term
-endif
-
-" Molokai (Color scheme)
-" colorscheme molokai
-" let g:molokai_original = 0
+colorscheme molokai
+let g:molokai_original = 0
 
 " No toolbar, menu bar, and scroll bar in GVim
 if has('gui_running')
