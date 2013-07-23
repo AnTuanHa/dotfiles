@@ -8,6 +8,9 @@ alias ls="ls --color"
 # Colourize grep's output
 alias grep="grep --color"
 
+# Use only one instance of gvim
+alias gvim="gvim --remote-silent"
+
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m'   # begin blinking
 export LESS_TERMCAP_md=$'\E[01;31m'   # begin bold
