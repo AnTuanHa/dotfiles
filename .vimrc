@@ -16,6 +16,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'wincent/Command-T'
 
