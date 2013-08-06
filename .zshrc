@@ -9,7 +9,7 @@ alias ls="ls --color"
 alias grep="grep --color"
 
 # Use only one instance of gvim
-alias gvim="gvim --remote-silent"
+alias gvimrs="gvim --remote-silent"
 
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m'   # begin blinking
