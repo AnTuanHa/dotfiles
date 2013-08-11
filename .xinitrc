@@ -1,3 +1,6 @@
+# Load NVIDIA settings ~/.nvidia-settings-rc
+nvidia-settings --load-config-only
+
 # Keyboard Repeat Delay
 xset r rate 250 30
 
