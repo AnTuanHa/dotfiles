@@ -36,6 +36,8 @@ Bundle 'wincent/Command-T'
 filetype plugin indent on
 syntax on
 
+set updatetime=1000
+
 " Fixes delay after pressing ESC and then O
 set timeout timeoutlen=1000 ttimeoutlen=100
 
