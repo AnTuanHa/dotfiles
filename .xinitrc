@@ -8,5 +8,8 @@ xset r rate 250 30
 xmodmap -e 'clear Lock'
 xmodmap -e 'keycode 0x42=Escape'
 
+# Load ~/.Xresources
+xrdb ~/.Xresources
+
 # Start Window Manager
 exec i3
