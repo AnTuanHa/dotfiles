@@ -159,7 +159,7 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
 
 # Set background image
-exec feh --bg-fill ~/.backgroud.jpg
+exec feh --bg-fill ~/.background.jpg
 
 # Start redshift
 exec redshift -c ~/.config/redshift.conf

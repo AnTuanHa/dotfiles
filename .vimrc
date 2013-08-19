@@ -38,6 +38,10 @@ syntax on
 
 set updatetime=1000
 
+" Autosave and auto open text folding
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
 " Fixes delay after pressing ESC and then O
 set timeout timeoutlen=1000 ttimeoutlen=100
 
@@ -67,3 +71,5 @@ if has('gui_running')
     set guioptions-=r
     set guioptions-=R
 endif
+
+noremap <Leader>r :CommandTFlush<CR>
