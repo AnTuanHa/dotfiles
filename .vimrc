@@ -53,8 +53,8 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-" Rewrap lines to the 80th column
-set textwidth=80
+" Rewrap lines to the 120th column
+set textwidth=120
 
 " Color Scheme
 colorscheme molokai
