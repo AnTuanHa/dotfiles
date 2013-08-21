@@ -14,11 +14,14 @@ Bundle 'gmarik/vundle'
 " ----------------------
 " Bundle 'name/repoName'
 Bundle 'tomasr/molokai'
-Bundle 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'wincent/Command-T'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'milkypostman/vim-togglelist'
+Bundle 'octol/vim-cpp-enhanced-highlight'
 
 " Repositories on Vim-Scripts
 " ---------------------------
@@ -30,17 +33,28 @@ Bundle 'wincent/Command-T'
 " Bundle 'git://git.website.com/repoName.git'
 
 
-" -----------------
-" Personal Settings
-" -----------------
+" ----------------------------------
+"
+"
+"         Personal Settings
+"
+"
+" ----------------------------------
 filetype plugin indent on
 syntax on
 
-set updatetime=1000
+" Remap leader key from default backslash(\) to spacebar
+let mapleader=" "
 
-" Autosave and auto open text folding
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+" Fuzzy file search
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>t :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
+
+" Go to Definition/Declaration on cursor
+nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<cr>
+
+" Time it takes to update gui while not doing anything (milliseconds)
+set updatetime=500
 
 " Fixes delay after pressing ESC and then O
 set timeout timeoutlen=1000 ttimeoutlen=100
@@ -72,4 +86,28 @@ if has('gui_running')
     set guioptions-=R
 endif
 
-noremap <Leader>r :CommandTFlush<CR>
+" Autoclose the preview window after you get out of insert mode
+let g:ycm_autoclose_preview_window_after_insertion=1
+
+" --------------------
+" Cscope abbreviations
+" --------------------
+if has('cscope')
+    " Where cscope is located
+    set csprg=/usr/bin/cscope
+
+    if has('quickfix')
+        set cscopequickfix=s-,c-,d-,i-,t-,e-
+    endif
+
+    cnoreabbrev csa cs add
+    cnoreabbrev csf cs find
+    cnoreabbrev csk cs kill
+    cnoreabbrev csr cs reset
+    cnoreabbrev css cs show
+    cnoreabbrev csh cs help
+
+    if filereadable("cscope.out")
+        cs add cscope.out
+    endif
+endif
