@@ -50,6 +50,19 @@ let mapleader=" "
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>t :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
 
+" ---------------------------
+" Content searching using Ack
+" ---------------------------
+let g:unite_source_grep_command = 'ack'
+let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
+let g:unite_source_grep_recursive_opt = ''
+
+" Find file with pattern
+nnoremap <leader>a :Unite grep<cr>
+
+" Find every file with the pattern on cursor
+nnoremap <leader>A :execute 'Unite grep:.::' . expand("<cword>") . ' '<cr>
+
 " Go to Definition/Declaration on cursor
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<cr>
 
@@ -87,7 +100,7 @@ if has('gui_running')
 endif
 
 " Autoclose the preview window after you get out of insert mode
-let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " --------------------
 " Cscope abbreviations
@@ -96,8 +109,14 @@ if has('cscope')
     " Where cscope is located
     set csprg=/usr/bin/cscope
 
+    " These commands will be put in the quickfix window
     if has('quickfix')
         set cscopequickfix=s-,c-,d-,i-,t-,e-
+    endif
+
+    " Checks for a cscope.out in the current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
     endif
 
     cnoreabbrev csa cs add
@@ -106,8 +125,14 @@ if has('cscope')
     cnoreabbrev csr cs reset
     cnoreabbrev css cs show
     cnoreabbrev csh cs help
-
-    if filereadable("cscope.out")
-        cs add cscope.out
-    endif
+    
+    " Build cscope database in current directory
+    nnoremap <leader>cs :!find . -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' > cscope.files<cr>
+                \:!cscope -b -i cscope.files -f cscope.out -q<cr>
+                \:cs kill -1<cr>
+                \:cs add cscope.out<cr>
+    " Instead of killing and adding, you can just do cs reset
+    " But this assumes that you already have and existing
+    " connection to cscope, if you haven't made a cscope.out
+    " and added it before, it will not work if you do a cs reset
 endif
