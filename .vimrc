@@ -1,37 +1,82 @@
 " -----------------
-" Initialize Vundle
+" Initialize NeoBundle
 " -----------------
 set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" Vundle managing Vundle
-Bundle 'gmarik/vundle'
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-" Repositories on GitHub
-" ----------------------
-" Bundle 'name/repoName'
-Bundle 'tomasr/molokai'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-surround'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'milkypostman/vim-togglelist'
-Bundle 'octol/vim-cpp-enhanced-highlight'
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Repositories on Vim-Scripts
-" ---------------------------
-" Bundle 'repoName'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'milkypostman/vim-togglelist'
+NeoBundle 'Raimondi/delimitMate'
 
+NeoBundleLazy 'Valloric/YouCompleteMe'
+NeoBundleLazy 'scrooloose/syntastic'
+NeoBundleLazy 'majutsushi/tagbar'
+NeoBundleLazy 'xolox/vim-easytags'
+NeoBundleLazy 'rmartinho/vim-cpp11'
+NeoBundleLazy 'beyondmarc/opengl.vim'
 
-" Repositories NOT on GitHub
-" --------------------------
-" Bundle 'git://git.website.com/repoName.git'
+" ----------------------------------
+"
+"
+"      Plugin Specific Settings
+"
+"
+" ----------------------------------
 
+" Don't autoclose in vim files
+autocmd FileType vim let b:delimitMate_autoclose = 0
+
+" Use Ack instead of Grep when using Unite's search feature
+let g:unite_source_grep_command = 'ack'
+let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
+let g:unite_source_grep_recursive_opt = ''
+
+" Only load these plugins in c++ files.
+autocmd FileType c,cpp NeoBundleSource YouCompleteMe
+autocmd FileType c,cpp NeoBundleSource syntastic
+autocmd FileType c,cpp NeoBundleSource tagbar
+autocmd FileType c,cpp NeoBundleSource vim-easytags
+autocmd FileType c,cpp NeoBundleSource vim-cpp11
+autocmd FileType c,cpp NeoBundleSource opengl.vim
+
+" Stop YouCompleteMe from constantly asking us whether or not to load the config file
+let g:ycm_confirm_extra_conf = 0
+
+" Autoclose the preview window after you get out of insert mode
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Stop EasyTags from warning us every time it sees that the UpdateTime is low
+let g:easytags_updatetime_warn = 0
+
+" Cause EasyTags to generate project specific tags on :UpdateTags (In current directory)
+let g:easytags_dynamic_files = 2
+
+" When running :UpdateTags, this will recursively update the tags instead of the current file
+let g:easytags_autorecurse = 1
+
+" Set global tags file if EasyTags can't generate the project specific tag
+let g:easytags_file = '~/.vim/tags/tags'
+
+" Faster syntax highlighting using Python
+let g:easytags_python_enabled = 1
+let g:easytags_python_script = "~/.vim/bundle/vim-easytags/misc/easytags/highlight.py"
+
+" Disable Easy Tag's auto highlight for now, it's too slow to handle more than 1 MB worth of tags
+let g:easytags_auto_highlight = 0
+
+NeoBundleCheck
 
 " ----------------------------------
 "
@@ -43,6 +88,9 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 filetype plugin indent on
 syntax on
 
+set tags+=~/.vim/tags/sdl2
+set tags+=~/.vim/tags/glm
+
 " Remap leader key from default backslash(\) to spacebar
 let mapleader=" "
 
@@ -50,21 +98,14 @@ let mapleader=" "
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>t :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
 
-" ---------------------------
-" Content searching using Ack
-" ---------------------------
-let g:unite_source_grep_command = 'ack'
-let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
-let g:unite_source_grep_recursive_opt = ''
-
 " Find file with pattern
 nnoremap <leader>a :Unite grep<cr>
 
 " Find every file with the pattern on cursor
 nnoremap <leader>A :execute 'Unite grep:.::' . expand("<cword>") . ' '<cr>
 
-" Go to Definition/Declaration on cursor
-nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<cr>
+" Toggle Tagbar
+nnoremap <Leader>w :TagbarToggle<cr>
 
 " Time it takes to update gui while not doing anything (milliseconds)
 set updatetime=500
@@ -79,6 +120,9 @@ set number
 set expandtab
 set tabstop=4
 set shiftwidth=4
+
+" Minimum window width
+set winwidth=80
 
 " Rewrap lines to the 120th column
 set textwidth=120
@@ -99,15 +143,18 @@ if has('gui_running')
     set guioptions-=R
 endif
 
-" Autoclose the preview window after you get out of insert mode
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
 " --------------------
 " Cscope abbreviations
 " --------------------
 if has('cscope')
     " Where cscope is located
     set csprg=/usr/bin/cscope
+
+    " Search using CScope and Tags
+    set cst
+
+    " Search through cscope first, then tags
+    set csto=0
 
     " These commands will be put in the quickfix window
     if has('quickfix')
