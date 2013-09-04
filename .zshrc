@@ -20,6 +20,12 @@ export LESS_TERMCAP_so=$'\E[1;44;33m' # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'       # end underline
 export LESS_TERMCAP_us=$'\E[1;32m'    # begin underline
 
+# Less source-highlighting
+export PAGER="less"
+export LESS="-R"
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+alias less="less -x4RFsX"
+
 # History Settings
 HISTFILE=~/.histfile
 HISTSIZE=10000
