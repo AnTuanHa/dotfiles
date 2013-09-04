@@ -94,6 +94,9 @@ set tags+=~/.vim/tags/glm
 " Remap leader key from default backslash(\) to spacebar
 let mapleader=" "
 
+" Automatically remove trailing whitespace
+autocmd FileType c,cpp,java,python autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 " Fuzzy file search
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>t :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
