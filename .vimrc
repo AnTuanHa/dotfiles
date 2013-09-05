@@ -44,10 +44,10 @@ let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-fil
 let g:unite_source_grep_recursive_opt = ''
 
 " Only load these plugins in c++ files.
-autocmd FileType c,cpp NeoBundleSource YouCompleteMe
-autocmd FileType c,cpp NeoBundleSource syntastic
-autocmd FileType c,cpp NeoBundleSource tagbar
-autocmd FileType c,cpp NeoBundleSource vim-easytags
+autocmd FileType c,cpp,java,python NeoBundleSource YouCompleteMe
+autocmd FileType c,cpp,java,python NeoBundleSource syntastic
+autocmd FileType c,cpp,java,python NeoBundleSource tagbar
+autocmd FileType c,cpp,java,python NeoBundleSource vim-easytags
 autocmd FileType c,cpp NeoBundleSource vim-cpp11
 autocmd FileType c,cpp NeoBundleSource opengl.vim
 
