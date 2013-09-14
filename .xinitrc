@@ -12,4 +12,4 @@ xmodmap -e 'keycode 0x42=Escape'
 xrdb ~/.Xresources
 
 # Start Window Manager
-exec i3
+exec awesome

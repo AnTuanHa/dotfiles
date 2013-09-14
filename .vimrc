@@ -14,6 +14,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tomtom/tcomment_vim'
@@ -50,6 +51,9 @@ autocmd FileType c,cpp,java,python NeoBundleSource tagbar
 autocmd FileType c,cpp,java,python NeoBundleSource vim-easytags
 autocmd FileType c,cpp NeoBundleSource vim-cpp11
 autocmd FileType c,cpp NeoBundleSource opengl.vim
+
+" Fall back YCM config
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_fallback_conf/.ycm_extra_conf.py'
 
 " Stop YouCompleteMe from constantly asking us whether or not to load the config file
 let g:ycm_confirm_extra_conf = 0
@@ -131,8 +135,9 @@ set winwidth=80
 set textwidth=120
 
 " Color Scheme
-colorscheme molokai
-let g:molokai_original = 0
+"colorscheme molokai
+"let g:molokai_original = 0
+colorscheme zenburn
 
 " No toolbar, menu bar, and scroll bar in GVim
 if has('gui_running')
