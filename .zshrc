@@ -85,4 +85,4 @@ PROMPT+="
 PROMPT+="%{$reset_color%}$ "                 # $
 
 # RPROMPT
-RPROMPT="%*" # Time (HH:MM:SS)
+# RPROMPT="%*" # Time (HH:MM:SS)
