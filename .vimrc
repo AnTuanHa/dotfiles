@@ -23,8 +23,6 @@ NeoBundle 'Raimondi/delimitMate'
 
 NeoBundleLazy 'Valloric/YouCompleteMe'
 NeoBundleLazy 'scrooloose/syntastic'
-NeoBundleLazy 'majutsushi/tagbar'
-NeoBundleLazy 'xolox/vim-easytags'
 NeoBundleLazy 'rmartinho/vim-cpp11'
 NeoBundleLazy 'beyondmarc/opengl.vim'
 
@@ -44,11 +42,11 @@ let g:unite_source_grep_command = 'ack'
 let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
 let g:unite_source_grep_recursive_opt = ''
 
+" Only load these plugins in c++, java and python files.
+autocmd FileType c,cpp,java,python,lua NeoBundleSource YouCompleteMe
+autocmd FileType c,cpp,java,python,lua NeoBundleSource syntastic
+
 " Only load these plugins in c++ files.
-autocmd FileType c,cpp,java,python NeoBundleSource YouCompleteMe
-autocmd FileType c,cpp,java,python NeoBundleSource syntastic
-autocmd FileType c,cpp,java,python NeoBundleSource tagbar
-autocmd FileType c,cpp,java,python NeoBundleSource vim-easytags
 autocmd FileType c,cpp NeoBundleSource vim-cpp11
 autocmd FileType c,cpp NeoBundleSource opengl.vim
 
@@ -60,25 +58,6 @@ let g:ycm_confirm_extra_conf = 0
 
 " Autoclose the preview window after you get out of insert mode
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Stop EasyTags from warning us every time it sees that the UpdateTime is low
-let g:easytags_updatetime_warn = 0
-
-" Cause EasyTags to generate project specific tags on :UpdateTags (In current directory)
-let g:easytags_dynamic_files = 2
-
-" When running :UpdateTags, this will recursively update the tags instead of the current file
-let g:easytags_autorecurse = 1
-
-" Set global tags file if EasyTags can't generate the project specific tag
-let g:easytags_file = '~/.vim/tags/tags'
-
-" Faster syntax highlighting using Python
-let g:easytags_python_enabled = 1
-let g:easytags_python_script = "~/.vim/bundle/vim-easytags/misc/easytags/highlight.py"
-
-" Disable Easy Tag's auto highlight for now, it's too slow to handle more than 1 MB worth of tags
-let g:easytags_auto_highlight = 0
 
 NeoBundleCheck
 
@@ -92,14 +71,14 @@ NeoBundleCheck
 filetype plugin indent on
 syntax on
 
-set tags+=~/.vim/tags/sdl2
-set tags+=~/.vim/tags/glm
+" Get user's operating system
+let os = substitute(system('uname'), "\n", "", "")
 
 " Remap leader key from default backslash(\) to spacebar
 let mapleader=" "
 
 " Automatically remove trailing whitespace
-autocmd FileType c,cpp,java,python autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,python,lua autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Fuzzy file search
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -111,9 +90,6 @@ nnoremap <leader>a :Unite grep<cr>
 " Find every file with the pattern on cursor
 nnoremap <leader>A :execute 'Unite grep:.::' . expand("<cword>") . ' '<cr>
 
-" Toggle Tagbar
-nnoremap <Leader>w :TagbarToggle<cr>
-
 " Time it takes to update gui while not doing anything (milliseconds)
 set updatetime=500
 
@@ -123,6 +99,9 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 " Adds line numbers to the left side of the editor
 set number
 
+" Adds column numbers to the bottom right of the editor
+set ruler
+
 " Insert spaces instead of tabs
 set expandtab
 set tabstop=4
@@ -131,17 +110,29 @@ set shiftwidth=4
 " Minimum window width
 set winwidth=80
 
+" Set window size to at least 120 px by 30 px
+set columns=80
+set lines=30
+
+" Allow to use backspace in insert mode
+set backspace=indent,eol,start
+
 " Rewrap lines to the 120th column
 set textwidth=120
 
 " Color Scheme
 "colorscheme molokai
-"let g:molokai_original = 0
 colorscheme zenburn
+
 
 " No toolbar, menu bar, and scroll bar in GVim
 if has('gui_running')
-    set guifont=Consolas\ 10
+    if os == "Linux"
+        set guifont=Consolas\ 9
+    elseif == "Windows"
+        set guifont=Consolas:h9
+    endif
+
     set guioptions-=T
     set guioptions-=l
     set guioptions-=L
@@ -157,12 +148,6 @@ endif
 if has('cscope')
     " Where cscope is located
     set csprg=/usr/bin/cscope
-
-    " Search using CScope and Tags
-    set cst
-
-    " Search through cscope first, then tags
-    set csto=0
 
     " These commands will be put in the quickfix window
     if has('quickfix')
