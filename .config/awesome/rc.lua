@@ -81,8 +81,8 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "main", 2, 3, 4, 5, 6, 7, 8, "steam" },
-    layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1],
+    names = { "main", "www", 3, 4, 5, 6, 7, 8, "steam" },
+    layout = { layouts[1], layouts[5], layouts[1], layouts[1], layouts[1],
                layouts[1], layouts[1], layouts[1], layouts[1] }
 }
 for s = 1, screen.count() do
@@ -248,7 +248,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "b",      function () awful.util.spawn("luakit") end),
+    awful.key({ modkey,           }, "b",      function () awful.util.spawn("chromium") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -445,3 +445,4 @@ end
 
 run_once("redshift -c ~/.config/redshift.conf")
 run_once("steam")
+run_once("pulseaudio --start")
