@@ -1,6 +1,6 @@
 URxvt*loginShell: true
 URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/luakit
+URxvt.url-launcher: /usr/bin/chromium
 URxvt.matcher.button: 1
 URxvt.scrollBar: false
 
@@ -18,7 +18,7 @@ URxvt*background:     #3f3f3f
 URxvt*foreground:     #dcdccc
 URxvt*cursorColor:    #aaaaaa
 URxvt*underlineColor: #dfaf8f
-URxvt*colorUL:        #366060
+URxvt*colorUL:        #569999
 URxvt*color0:         #3f3f3f
 URxvt*color1:         #cc9393
 URxvt*color2:         #7f9f7f
