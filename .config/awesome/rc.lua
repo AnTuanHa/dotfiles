@@ -360,6 +360,10 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Steam" },
       properties = { tag = tags[1][9] } },
+    { rule = { class = "dota_linux" },
+      properties = { border_width = 0 } },
+    { rule = { class = "hl2_linux" },
+      properties = { border_width = 0 } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
@@ -446,3 +450,4 @@ end
 run_once("redshift -c ~/.config/redshift.conf")
 run_once("steam")
 run_once("pulseaudio --start")
+run_once("mpd")
