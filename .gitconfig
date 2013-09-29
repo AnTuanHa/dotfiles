@@ -1,0 +1,10 @@
+[user]
+	email = zero579911@gmail.com
+	name = An Ha
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+	excludesfile = /home/an/.gitignore
