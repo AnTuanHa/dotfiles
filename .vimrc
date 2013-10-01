@@ -13,10 +13,17 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \     'windows' : 'make -f make_mingw32.mak',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ }
 NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'milkypostman/vim-togglelist'
 NeoBundle 'Raimondi/delimitMate'
@@ -107,13 +114,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-" Minimum window width
-set winwidth=80
-
-" Set window size to at least 120 px by 30 px
-set columns=80
-set lines=30
-
 " Allow to use backspace in insert mode
 set backspace=indent,eol,start
 
@@ -121,9 +121,7 @@ set backspace=indent,eol,start
 set textwidth=120
 
 " Color Scheme
-"colorscheme molokai
 colorscheme zenburn
-
 
 " No toolbar, menu bar, and scroll bar in GVim
 if has('gui_running')
@@ -165,7 +163,7 @@ if has('cscope')
     cnoreabbrev csr cs reset
     cnoreabbrev css cs show
     cnoreabbrev csh cs help
-    
+
     " Build cscope database in current directory
     nnoremap <leader>cs :!find . -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' > cscope.files<cr>
                 \:!cscope -b -i cscope.files -f cscope.out -q<cr>
