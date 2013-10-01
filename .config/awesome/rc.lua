@@ -81,7 +81,7 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "main", "www", 3, 4, 5, 6, 7, 8, "steam" },
+    names = { "main", "www", 3, 4, 5, 6, 7, "music", "steam" },
     layout = { layouts[1], layouts[5], layouts[1], layouts[1], layouts[1],
                layouts[1], layouts[1], layouts[1], layouts[1] }
 }
@@ -360,6 +360,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Steam" },
       properties = { tag = tags[1][9] } },
+    { rule = { instance = "ncmpcpp" },
+      properties = { tag = tags[1][8] } },
     { rule = { class = "dota_linux" },
       properties = { border_width = 0 } },
     { rule = { class = "hl2_linux" },
@@ -452,3 +454,4 @@ run_once("steam")
 run_once("pulseaudio --start")
 run_once("mpd")
 run_once("~/xcape/xcape")
+awful.util.spawn_with_shell("urxvt -name ncmpcpp -e ncmpcpp")
