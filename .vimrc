@@ -87,15 +87,18 @@ let mapleader=" "
 " Automatically remove trailing whitespace
 autocmd FileType c,cpp,java,python,lua autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Fuzzy file search
+" Fuzzy file search (Leader + t, from Command T)
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <leader>t :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
 
-" Find file with pattern
+" Find file with pattern (Leader + a(ck))
 nnoremap <leader>a :Unite grep<cr>
 
-" Find every file with the pattern on cursor
+" Find every file with the pattern on cursor (Leader + A(ck))
 nnoremap <leader>A :execute 'Unite grep:.::' . expand("<cword>") . ' '<cr>
+
+" Clear highlighted searches (Leader + (c)lear (h)ighlighted (s)earch)
+nnoremap <leader>chs :nohlsearch<cr>
 
 " Time it takes to update gui while not doing anything (milliseconds)
 set updatetime=500
@@ -119,6 +122,12 @@ set backspace=indent,eol,start
 
 " Rewrap lines to the 120th column
 set textwidth=120
+
+" Highlight search terms
+set hlsearch
+
+" Show search matches as you type
+set incsearch
 
 " Color Scheme
 colorscheme zenburn
