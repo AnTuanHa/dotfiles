@@ -26,6 +26,7 @@ NeoBundle 'Shougo/unite.vim'
         let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
         let g:unite_source_grep_recursive_opt = ''
     endif
+
     " Enable fuzzy matching
     call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
@@ -37,24 +38,22 @@ NeoBundle 'Shougo/vimproc', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ }
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tomtom/tcomment_vim'
+
+NeoBundle 'Shougo/neocomplete.vim'
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+    let g:neocomplete#sources#dictionary#dictionaries = { 'default' : '' }
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+
+    " Allow only words to be in the keyword
+    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
 NeoBundle 'Raimondi/delimitMate'
-    autocmd FileType vim let b:delimitMate_autoclose = 0
-
-NeoBundleLazy 'Valloric/YouCompleteMe'
-    autocmd FileType c,cpp,java,python,lua NeoBundleSource YouCompleteMe
-
-    " Fall back YCM config
-    let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_fallback_conf/.ycm_extra_conf.py'
-
-    " Stop YouCompleteMe from constantly asking us whether or not to load the config file
-    let g:ycm_confirm_extra_conf = 0
-
-    " Autoclose the preview window after you get out of insert mode
-    let g:ycm_autoclose_preview_window_after_insertion = 1
+    autocmd FileType vim let b:loaded_delimitMate = 1
 
 NeoBundleLazy 'scrooloose/syntastic'
     autocmd FileType c,cpp,java,python,lua NeoBundleSource syntastic
@@ -62,8 +61,10 @@ NeoBundleLazy 'scrooloose/syntastic'
 NeoBundleLazy 'rmartinho/vim-cpp11'
     autocmd FileType c,cpp NeoBundleSource vim-cpp11
 
-NeoBundleLazy 'beyondmarc/opengl.vim'
-    autocmd FileType c,cpp NeoBundleSource opengl.vim
+NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tomtom/tcomment_vim'
 
 " Check Bundles
 NeoBundleCheck
@@ -134,6 +135,9 @@ set updatetime=500
 " Fixes delay after pressing ESC and then O
 set timeout timeoutlen=1000 ttimeoutlen=100
 
+" Fixes lag/delay when inserting parentheses and brackets in large files
+let g:matchparen_insert_timeout=5
+
 " Color Scheme
 colorscheme zenburn
 
@@ -167,43 +171,8 @@ endif
 " Find file with pattern (Leader + (a)ck, or (a)g)
 nnoremap <leader>a :<C-u>Unite grep:.<cr>
 
-" Find every file with the pattern on cursor (Leader + A(ck) or (a)g)
+" Find every file with the pattern on cursor (Leader + (a)ck or (a)g)
 nnoremap <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' '<cr>
 
 " Switch buffers fast (Leader + (b)uffer)
 nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
-
-" --------------------
-" Cscope abbreviations
-" --------------------
-if has('cscope')
-    " Where cscope is located
-    set csprg=/usr/bin/cscope
-
-    " These commands will be put in the quickfix window
-    if has('quickfix')
-        set cscopequickfix=s-,c-,d-,i-,t-,e-
-    endif
-
-    " Checks for a cscope.out in the current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    endif
-
-    cnoreabbrev csa cs add
-    cnoreabbrev csf cs find
-    cnoreabbrev csk cs kill
-    cnoreabbrev csr cs reset
-    cnoreabbrev css cs show
-    cnoreabbrev csh cs help
-
-    " Build cscope database in current directory
-    nnoremap <leader>cs :!find . -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' > cscope.files<cr>
-                \:!cscope -b -i cscope.files -f cscope.out -q<cr>
-                \:cs kill -1<cr>
-                \:cs add cscope.out<cr>
-    " Instead of killing and adding, you can just do cs reset
-    " But this assumes that you already have and existing
-    " connection to cscope, if you haven't made a cscope.out
-    " and added it before, it will not work if you do a cs reset
-endif
