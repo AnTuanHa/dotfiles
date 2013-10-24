@@ -39,18 +39,25 @@ NeoBundle 'Shougo/vimproc', {
             \    },
             \ }
 
-NeoBundle 'Shougo/neocomplete.vim'
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
+NeoBundleLazy 'Shougo/neocomplete.vim'
+    " NeoComplete requires vim to be compiled with lua support
+    if has('lua')
+        NeoBundleSource neocomplete
+        let g:neocomplete#enable_at_startup = 1
+        let g:neocomplete#enable_smart_case = 1
+        let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-    let g:neocomplete#sources#dictionary#dictionaries = { 'default' : '' }
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
+        let g:neocomplete#sources#dictionary#dictionaries = { 'default' : '' }
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+
+        " Allow only words to be in the keyword
+        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+        " Maps <TAB> as <C-n> for completion
+        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
     endif
-
-    " Allow only words to be in the keyword
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 NeoBundle 'Raimondi/delimitMate'
     autocmd FileType vim let b:loaded_delimitMate = 1
@@ -123,9 +130,9 @@ set shiftwidth=4
 " Rewrap lines to the 120th column
 set textwidth=120
 
-" Add a vertical line to the 80th column
+" Add a visual vertical line 1 column after textwidth
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=+1
 endif
 
 " Searching
