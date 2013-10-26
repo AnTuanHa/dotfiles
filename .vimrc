@@ -13,22 +13,47 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
+    " Use Ag (Silver Searcher) instead of Ack when using Unite's search feature
     if executable('ag')
-        " Use Ag (Silver Searcher) instead of Ack when using Unite's search feature
         let g:unite_source_grep_command='ag'
         let g:unite_source_grep_default_opts =
         \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
         \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
         let g:unite_source_grep_recursive_opt=''
+
+    " Use Ack instead of Grep when using Unite's search feature
     elseif executable('ack')
-        " Use Ack instead of Grep when using Unite's search feature
         let g:unite_source_grep_command = 'ack'
         let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
         let g:unite_source_grep_recursive_opt = ''
     endif
 
+    " Ignore the following files/directories
+    call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+                \ 'ignore_pattern', join([
+                \ '\.git/',
+                \ ], '\|'))
+
     " Enable fuzzy matching
     call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+    " Enable rank sorter
+    call unite#filters#sorter_default#use(['sorter_rank'])
+
+    let g:unite_split_rule = "botright"
+    let g:unite_force_overwrite_statusline = 0
+    let g:unite_winheight = 10
+
+    autocmd FileType unite call s:unite_settings()
+
+    function! s:unite_settings()
+        imap <buffer> <ESC> <Plug>(unite_exit)
+
+        imap <buffer> <C-j> <Plug>(unite_select_next_line)
+        imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+        imap <silent><buffer><expr> <C-x> unite#do_action('split')
+        imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+    endfunction
 
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
@@ -58,17 +83,18 @@ if has('lua')
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 endif
 
-NeoBundle 'Raimondi/delimitMate'
-    autocmd FileType vim let b:loaded_delimitMate = 1
-
-NeoBundle 'plasticboy/vim-markdown'
+NeoBundleLazy 'plasticboy/vim-markdown'
+    autocmd FileType mkd NeoBundleSource vim-markdown
     let g:vim_markdown_folding_disabled=1
 
 NeoBundleLazy 'scrooloose/syntastic'
-    autocmd FileType c,cpp,java,python,lua NeoBundleSource syntastic
+    autocmd FileType c,cpp,java,python,lua,html,css NeoBundleSource syntastic
 
 NeoBundleLazy 'rmartinho/vim-cpp11'
     autocmd FileType c,cpp NeoBundleSource vim-cpp11
+
+NeoBundle 'Raimondi/delimitMate'
+    autocmd FileType vim let b:loaded_delimitMate = 1
 
 NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'tpope/vim-surround'
@@ -102,12 +128,23 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-" Don't update screen unless executing a macro, register or other commands
+" Improves redrawing
+set ttyfast
+
+" Don't update screen while executing a macro, register or
+" other commands that not have been typed
 set lazyredraw
 
 " Mouse
 set mouse=a     " Enable Mouse
 set mousehide   " Hide mouse when typing
+
+" Allows you to edit other files without saving current file
+set hidden
+
+" No backup files
+set nobackup
+set noswapfile
 
 " Number of command lines to remember
 set history=1000
@@ -182,11 +219,11 @@ set wildmode=list:full
 " Automatically remove trailing whitespace
 autocmd FileType c,cpp,java,python,lua,vim autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Fuzzy file search (Leader + t, from Command T)
+" Fuzzy file search (Control + P, from ctrlp plugin)
 if os == "Windows"
-    nnoremap <leader>t :<C-u>Unite -start-insert -toggle -auto-resize -buffer-name=files file_rec buffer file_mru<cr>
+    nnoremap <C-p> :<C-u>Unite -start-insert -auto-resize -buffer-name=files file_rec buffer file_mru<cr>
 else
-    nnoremap <leader>t :<C-u>Unite -start-insert -toggle -auto-resize -buffer-name=files file_rec/async buffer file_mru<cr>
+    nnoremap <C-p> :<C-u>Unite -start-insert -auto-resize -buffer-name=files file_rec/async buffer file_mru<cr>
 endif
 
 " Find file with pattern (Leader + (a)ck, or (a)g)
