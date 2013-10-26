@@ -39,28 +39,30 @@ NeoBundle 'Shougo/vimproc', {
             \    },
             \ }
 
-NeoBundleLazy 'Shougo/neocomplete.vim'
-    " NeoComplete requires vim to be compiled with lua support
-    if has('lua')
-        NeoBundleSource neocomplete
-        let g:neocomplete#enable_at_startup = 1
-        let g:neocomplete#enable_smart_case = 1
-        let g:neocomplete#sources#syntax#min_keyword_length = 3
+" NeoComplete requires vim to be compiled with lua support
+if has('lua')
+    NeoBundle 'Shougo/neocomplete.vim'
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-        let g:neocomplete#sources#dictionary#dictionaries = { 'default' : '' }
-        if !exists('g:neocomplete#keyword_patterns')
-            let g:neocomplete#keyword_patterns = {}
-        endif
-
-        " Allow only words to be in the keyword
-        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-        " Maps <TAB> as <C-n> for completion
-        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    let g:neocomplete#sources#dictionary#dictionaries = { 'default' : '' }
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
     endif
+
+    " Allow only words to be in the keyword
+    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+    " Maps <TAB> as <C-n> for completion
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+endif
 
 NeoBundle 'Raimondi/delimitMate'
     autocmd FileType vim let b:loaded_delimitMate = 1
+
+NeoBundle 'plasticboy/vim-markdown'
+    let g:vim_markdown_folding_disabled=1
 
 NeoBundleLazy 'scrooloose/syntastic'
     autocmd FileType c,cpp,java,python,lua NeoBundleSource syntastic
@@ -126,6 +128,7 @@ set cursorline
 set expandtab
 set tabstop=4
 set shiftwidth=4
+autocmd FileType html,css set tabstop=2 shiftwidth=2
 
 " Rewrap lines to the 120th column
 set textwidth=120
@@ -169,6 +172,12 @@ if has('gui_running')
     set guioptions-=r
     set guioptions-=R
 endif
+
+" Enable command-line completion
+set wildmenu
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*/.hg/**/*,*/.svn/**/*,*/tmp/*,*.so
+set wildignorecase
+set wildmode=list:full
 
 " Automatically remove trailing whitespace
 autocmd FileType c,cpp,java,python,lua,vim autocmd BufWritePre <buffer> :%s/\s\+$//e
