@@ -164,8 +164,9 @@ set cursorline
 " Insert spaces instead of tabs
 set expandtab
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
-autocmd FileType html,css set tabstop=2 shiftwidth=2
+autocmd FileType html,css setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " Rewrap lines to the 120th column
 set textwidth=120
@@ -197,7 +198,7 @@ colorscheme zenburn
 if has('gui_running')
     if os == "Linux"
         set guifont=Consolas\ 9
-    elseif == "Windows"
+    elseif os == "Windows"
         set guifont=Consolas:h9
     endif
 
@@ -234,3 +235,6 @@ nnoremap <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' '<cr>
 
 " Switch buffers fast (Leader + (b)uffer)
 nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
+
+" Map CTRL + L to clear highlighting and then clear/redraw screen.
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
