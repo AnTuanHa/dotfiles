@@ -359,7 +359,9 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Steam" },
-      properties = { tag = tags[1][9] } },
+      properties = { tag = tags[1][9],
+                     floating = true,
+                     border_width = 0 } },
     { rule = { instance = "ncmpcpp" },
       properties = { tag = tags[1][8] } },
     { rule = { class = "dota_linux" },
@@ -449,8 +451,8 @@ function run_once(prg)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")")
 end
 
+run_once("mpd")
+run_once("compton --config ~/.compton.conf -b")
 run_once("redshift -c ~/.config/redshift.conf")
 run_once("steam")
-run_once("pulseaudio --start")
-run_once("mpd")
 awful.util.spawn_with_shell("urxvt -name ncmpcpp -e ncmpcpp")
