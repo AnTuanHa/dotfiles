@@ -26,6 +26,9 @@ export LESS="-R"
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 alias less="less -x4RFsX"
 
+# Editor
+export EDITOR="/usr/bin/vim"
+
 # History Settings
 HISTFILE=~/.histfile
 HISTSIZE=10000
