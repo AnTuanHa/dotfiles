@@ -96,6 +96,7 @@ NeoBundleLazy 'rmartinho/vim-cpp11'
 NeoBundle 'Raimondi/delimitMate'
     autocmd FileType vim let b:loaded_delimitMate = 1
 
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
