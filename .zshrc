@@ -2,6 +2,15 @@
 # .zshrc Config File
 # ------------------
 
+# Ruby
+export PATH=$PATH:~/.gem/ruby/2.0.0/bin
+
+# BSPWM
+export PATH=$PATH:/home/an/.config/scripts
+export PANEL_FIFO="/tmp/panel-fifo"
+export XDG_CONFIG_HOME="/home/an/.config"
+export BSPWM_SOCKET="/tmp/bspwm-socket"
+
 # Colourize ls' output
 alias ls="ls --color"
 
@@ -86,6 +95,3 @@ PROMPT+='%{$fg[yellow]%} ${vcs_info_msg_0_}' # Version Control System
 PROMPT+="
 "                                            # New Line
 PROMPT+="%{$reset_color%}$ "                 # $
-
-# RPROMPT
-# RPROMPT="%*" # Time (HH:MM:SS)

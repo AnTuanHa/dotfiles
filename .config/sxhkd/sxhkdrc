@@ -1,0 +1,103 @@
+# -------------
+# bspwm hotkeys
+# -------------
+
+# Exits window manager back to tty
+super + shift + q
+    bspc quit && pkill bar && pkill panel && pkill redshift
+
+# Closes focused window
+super + shift + c
+    bspc window -c
+
+# Kill focused window
+super + shift + ctrl + c
+    bspc window -k
+
+# Balance all windows
+super + b
+    bspc desktop -B
+
+# Focus between floating windows and tiled windows
+super + g
+    bspc window -f {next.floating,next.tiled}
+
+# Toggles focused window to be floating, fullscreen or tiled
+super + {s,f}
+    bspc window -t {floating,fullscreen}
+
+# Swaps current window with the biggest window on the current desktop
+super + m
+    bspc window -s biggest
+
+# Focuses or swaps the current window in any direction
+super + {_,shift + }{h,j,k,l}
+    bspc window -{f,s} {left,down,up,right}
+
+# Preselects the splitting area of the selected window
+super + ctrl + {h,j,k,l}
+    bspc window -p {left,down,up,right}
+
+# Cancels the preselect of the focused window or all of them
+super + ctrl + {_,shift + }space
+    bspc {window -p cancel,desktop -c}
+
+# Pushes (resize) the edge of the selected window in the given direction
+super + alt + {h,j,k,l}
+    bspc window -e {left,down,up,right} push
+
+# Pulls (resize) the edge of the selected window in the given direction
+super + alt + shift + {h,j,k,l}
+    bspc window -e {right,up,down,left} pull
+
+# Change desktops or move focused window to desktop from 0 to 9.
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,window -d} ^{1-9,10}
+
+# Circulate the leaves of the tree
+super + {comma,period}
+    bspc desktop -F {horizontal,vertical}
+
+# Rotate the tree in the given direction in relation to the focused window
+super + shift {comma,period}
+    bspc desktop -R {90,270}
+
+# Increase the window gap between all windows
+super + minus
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` + 5))
+
+# Decrease the window gap between all windows
+super + equal
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` - 5))
+
+# Left clicking focuses window
+~button1
+    bspc pointer -g focus
+
+# Moves window, resizes side or resizes corners of selected window with mouse
+super + button{1-3}
+    bspc pointer -g {move,resize_side,resize_corner}
+
+# Needed for ^^^^
+super + !button{1-3}
+    bspc pointer -t %i %i
+
+# ----------------------
+# wm independent hotkeys
+# ----------------------
+
+# Reload sxhkd configuration file
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Start terminal
+super + Return
+    urxvt
+
+# Start dmenu
+super + space
+    dmenu_run
+
+# Start web browser
+super + alt + b
+    chromium

@@ -1,3 +1,6 @@
+# Start systemd as a user
+exec systemd --user &
+
 # Load NVIDIA settings ~/.nvidia-settings-rc
 nvidia-settings --load-config-only
 
@@ -10,5 +13,17 @@ setxkbmap -option 'ctrl:nocaps'
 # Load ~/.Xresources
 xrdb ~/.Xresources
 
+# Start compositing manager
+compton --config ~/.compton.conf -b
+
+# Set cursor
+xsetroot -cursor_name left_ptr
+
+# Set background image
+hsetroot -tile ~/.config/background.jpg
+
 # Start Window Manager
-exec awesome
+sxhkd &
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+exec bspwm -s "$PANEL_FIFO" -p "W"
