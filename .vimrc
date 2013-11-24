@@ -16,22 +16,21 @@ NeoBundle 'Shougo/unite.vim'
     " Use Ag (Silver Searcher) instead of Ack when using Unite's search feature
     if executable('ag')
         let g:unite_source_grep_command='ag'
-        let g:unite_source_grep_default_opts =
-        \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-        \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+        let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --hidden'
         let g:unite_source_grep_recursive_opt=''
-
-    " Use Ack instead of Grep when using Unite's search feature
-    elseif executable('ack')
-        let g:unite_source_grep_command = 'ack'
-        let g:unite_source_grep_default_opts = '--column --no-color --nogroup --with-filename'
-        let g:unite_source_grep_recursive_opt = ''
     endif
 
     " Ignore the following files/directories
     call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
                 \ 'ignore_pattern', join([
                 \ '\.git/',
+                \ '\.svn/',
+                \ '\.hg/',
+                \ '*.swp',
+                \ '*.bak',
+                \ '*.pyc',
+                \ '*.class',
+                \ '*.so',
                 \ ], '\|'))
 
     " Enable fuzzy matching
@@ -113,9 +112,6 @@ NeoBundleCheck
 "
 " ----------------------------------
 
-" Get user's operating system
-let os = substitute(system('uname'), "\n", "", "")
-
 filetype plugin indent on
 syntax on
 
@@ -137,8 +133,8 @@ set ttyfast
 set lazyredraw
 
 " Mouse
-set mouse=a     " Enable Mouse
-set mousehide   " Hide mouse when typing
+set mouse=a   " Enable Mouse
+set mousehide " Hide mouse when typing
 
 " Allows you to edit other files without saving current file
 set hidden
@@ -178,10 +174,10 @@ if exists('+colorcolumn')
 endif
 
 " Searching
-set hlsearch    " Highlight search terms
-set incsearch   " Show search matches as you type
-set ignorecase  " Case-Insensitive when searching
-set smartcase   " Except if there's a capital letter
+set hlsearch   " Highlight search terms
+set incsearch  " Show search matches as you type
+set ignorecase " Case-Insensitive when searching
+set smartcase  " Except if there's a capital letter
 
 " Time it takes to update gui while not doing anything (milliseconds)
 set updatetime=500
@@ -197,10 +193,10 @@ colorscheme zenburn
 
 " No toolbar, menu bar, and scroll bar in GVim
 if has('gui_running')
-    if os == "Linux"
-        set guifont=Consolas\ 9
-    elseif os == "Windows"
+    if has("win16") || has("win32") || has('win64')
         set guifont=Consolas:h9
+    else
+        set guifont=Consolas\ 9
     endif
 
     set guioptions-=T
@@ -222,11 +218,7 @@ set wildmode=list:full
 autocmd FileType c,cpp,java,python,lua,vim autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Fuzzy file search (Control + P, from ctrlp plugin)
-if os == "Windows"
-    nnoremap <C-p> :<C-u>Unite -start-insert -auto-resize -buffer-name=files file_rec buffer file_mru<cr>
-else
-    nnoremap <C-p> :<C-u>Unite -start-insert -auto-resize -buffer-name=files file_rec/async buffer file_mru<cr>
-endif
+nnoremap <C-p> :<C-u>Unite -start-insert -buffer-name=files file_mru buffer file file_rec/async<cr>
 
 " Find file with pattern (Leader + (a)ck, or (a)g)
 nnoremap <leader>a :<C-u>Unite grep:.<cr>
