@@ -1,0 +1,103 @@
+# If Condition
+snippet If
+abbr    If ... Then ... End If
+    If ${1:#:condition} Then
+        ${2}
+    End If
+
+# Else
+snippet Else
+abbr    Else ...
+    Else
+        ${0}
+
+# Else-If Condition
+snippet ElseIf
+    ElseIf ${1:#:condition} Then
+        ${2}
+
+# If-Else Condition
+snippet IfElse
+abbr    If ... Then ... Else ... End If
+    If ${1:#:condition} Then
+        ${2}
+    Else
+        ${3}
+    End If
+
+# While ... End While
+snippet While
+abbr    While ... End While
+    While ${1:#:condition}
+        ${2}
+    End While
+
+# Do While ... Loop
+snippet DoWhile
+abbr    Do While ... Loop
+    Do While ${1:#:condition}
+        ${2}
+    Loop
+
+# Do Until ... Loop
+snippet DoUntil
+abbr    Do Until ... Loop
+    Do Until ${1:#:condition}
+        ${2}
+    Loop
+
+# Do ... Loop While
+snippet DoLoopWhile
+abbr    Do ... Loop While 
+    Do
+        ${2}
+    Loop While ${1:#:condition}
+
+# Do ... Loop Until
+snippet DoLoopUntil
+abbr    Do ... Loop Until 
+    Do
+        ${2}
+    Loop Until ${1:#:condition}
+
+# For As DataType Loop
+snippet For
+abbr    For As DataType ... Next
+    For ${1:#:variable} As ${2:#:datatype} = ${3:#:start} To ${4:#:end}
+        ${5}
+    Next
+
+# For Loop
+snippet For2
+abbr    For ... Next
+    For ${1:#:variable} = ${2:#:start} To ${3:#:end}
+        ${4}
+    Next
+
+# For As DataType Step Loop
+snippet ForStep
+abbr    For As DataType Step ... Next
+    For ${1:#:variable} As ${2:#:datatype} = ${3:#:start} To ${4:#:end} Step ${5:#:step}
+        ${6}
+    Next
+
+# For Step Loop
+snippet ForStep2
+abbr    For Step ... Next
+    For ${1:#:variable} = ${2:#:start} To ${3:#:end} Step ${4:#:step}
+        ${5}
+    Next
+
+# For Each ... Next Loop
+snippet ForEach
+abbr    For Each As DataType ... Next
+    For Each ${1:#:element} As ${2:#:datatype} In ${3:#:group}
+        ${4}
+    Next
+
+# For Each ... Next Loop
+snippet ForEach2
+abbr    For Each ... Next
+    For Each ${1:#:element} In ${2:#:group}
+        ${3}
+    Next
