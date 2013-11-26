@@ -1,0 +1,32 @@
+# Switch case default
+snippet switch
+abbr    switch () { case ... default ... }
+    switch (${1:#:variable}) {
+        case ${2:#:value}:
+            ${3:TARGET}
+            break;
+        default:
+            ${4}
+    }
+
+# #include <...>
+snippet inc
+alias   #inc, #include
+abbr    #include <...>
+    #include <${1}>${0}
+
+# #include "..."
+snippet inc2
+alias   #inc2, #include2
+abbr    #include "..."
+    #include "${1}"${0}
+
+# Include-Guard
+snippet once
+abbr include-guard
+    #ifndef ${1:SYMBOL}
+        #define $1
+
+        ${0:TARGET}
+
+    #endif

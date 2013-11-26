@@ -77,14 +77,23 @@ if has('lua')
 
     " Allow only words to be in the keyword
     let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-    " Maps <TAB> as <C-n> for completion
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 endif
 
-NeoBundleLazy 'plasticboy/vim-markdown'
-    autocmd FileType mkd NeoBundleSource vim-markdown
-    let g:vim_markdown_folding_disabled=1
+NeoBundle 'Shougo/neosnippet'
+    let g:neosnippet#snippets_directory='~/.vim/snippets'
+
+    " For snippet_complete marker.
+    if has('conceal')
+      set conceallevel=2 concealcursor=i
+    endif
+
+    " Maps <TAB> to expand or jump the neosnippet
+    imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: pumvisible() ? "\<C-n>" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: "\<TAB>"
 
 NeoBundleLazy 'scrooloose/syntastic'
     autocmd FileType c,cpp,java,python,lua,html,css NeoBundleSource syntastic
@@ -191,23 +200,6 @@ let g:matchparen_insert_timeout=5
 " Color Scheme
 colorscheme zenburn
 
-" No toolbar, menu bar, and scroll bar in GVim
-if has('gui_running')
-    if has("win16") || has("win32") || has('win64')
-        set guifont=Consolas:h9
-    else
-        set guifont=Consolas\ 9
-    endif
-
-    set guioptions-=T
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=m
-    set guioptions-=M
-    set guioptions-=r
-    set guioptions-=R
-endif
-
 " Enable command-line completion
 set wildmenu
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*/.hg/**/*,*/.svn/**/*,*/tmp/*,*.so
@@ -217,13 +209,16 @@ set wildmode=list:full
 " Automatically remove trailing whitespace
 autocmd FileType c,cpp,java,python,lua,vim autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Detect markdown files and set the correct filetype
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " Fuzzy file search (Control + P, from ctrlp plugin)
 nnoremap <C-p> :<C-u>Unite -start-insert -buffer-name=files file_mru buffer file file_rec/async<cr>
 
-" Find file with pattern (Leader + (a)ck, or (a)g)
+" Find file with pattern (Leader + (a)g)
 nnoremap <leader>a :<C-u>Unite grep:.<cr>
 
-" Find every file with the pattern on cursor (Leader + (a)ck or (a)g)
+" Find every file with the pattern on cursor (Leader + (a)g)
 nnoremap <leader>A :<C-u>execute 'Unite grep:.::' . expand("<cword>") . ' '<cr>
 
 " Switch buffers fast (Leader + (b)uffer)
