@@ -4,10 +4,18 @@
 set nocompatible
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    if has("win16") || has("win32") || has("win64")
+        set runtimepath+=$VIM/bundle/neobundle.vim/
+    else
+        set runtimepath+=~/.vim/bundle/neobundle.vim/
+    endif
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+if has("win16") || has("win32") || has("win64")
+    call neobundle#rc(expand('$VIM/bundle/'))
+else
+    call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -80,7 +88,11 @@ if has('lua')
 endif
 
 NeoBundle 'Shougo/neosnippet'
-    let g:neosnippet#snippets_directory='~/.vim/snippets'
+    if has("win16") || has("win32") || has("win64")
+        let g:neosnippet#snippets_directory='$VIM/snippets'
+    else
+        let g:neosnippet#snippets_directory='~/.vim/snippets'
+    endif
 
     " For snippet_complete marker.
     if has('conceal')
