@@ -118,6 +118,7 @@ NeoBundle 'Raimondi/delimitMate'
 
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tomtom/tcomment_vim'
@@ -210,7 +211,8 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 let g:matchparen_insert_timeout=5
 
 " Color Scheme
-colorscheme zenburn
+let g:hybrid_use_Xresources=1
+colorscheme hybrid
 
 " Enable command-line completion
 set wildmenu
