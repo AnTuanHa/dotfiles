@@ -14,13 +14,13 @@ setxkbmap -option 'ctrl:nocaps'
 xrdb ~/.Xresources
 
 # Start compositing manager
-compton --config ~/.compton.conf -b
+compton &
 
 # Set cursor
-xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr &
 
 # Set background image
-hsetroot -tile ~/.config/background.jpg
+hsetroot -tile ~/.config/background.jpg &
 
 # Start Window Manager
 sxhkd &
