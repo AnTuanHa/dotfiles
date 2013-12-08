@@ -13,6 +13,9 @@ setxkbmap -option 'ctrl:nocaps'
 # Load ~/.Xresources
 xrdb ~/.Xresources
 
+# Set bspwm rules
+rulc -l > /dev/null || ruld &
+
 # Start compositing manager
 compton &
 

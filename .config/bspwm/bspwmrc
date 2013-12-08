@@ -11,14 +11,8 @@ bspc config window_gap            0
 bspc config split_ratio           0.50
 bspc config focus_follows_pointer true
 
-# -----
-# Rules
-# -----
-bspc rule -a Steam -d 9 --floating
-bspc rule -a ncmpcpp -d 8
-bspc rule -a Mumble --floating
-bspc rule -a gimp --floating
-bspc rule -a feh --floating
+bspc config rule_command "$(which rule_command)"
+bspwm_rules
 
 # ------------------
 # Autostart Programs
