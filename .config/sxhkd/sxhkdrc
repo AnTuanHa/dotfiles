@@ -44,11 +44,11 @@ super + ctrl + {_,shift + }space
 
 # Pushes (resize) the edge of the selected window in the given direction
 super + alt + {h,j,k,l}
-    bspc window -e {left,down,up,right} push
+    bspc window -e {left -10,down +10,up -10,right +10}
 
 # Pulls (resize) the edge of the selected window in the given direction
 super + alt + shift + {h,j,k,l}
-    bspc window -e {right,up,down,left} pull
+    bspc window -e {right -10,up +10,down -10,left +10}
 
 # Change desktops or move focused window to desktop from 0 to 9.
 super + {_,shift + }{1-9,0}
