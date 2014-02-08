@@ -1,36 +1,37 @@
-URxvt*loginShell:      true
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher:    /usr/bin/chromium
-URxvt.matcher.button:  1
-URxvt.scrollBar:       false
+URxvt*loginShell      : true
+URxvt.perl-ext-common : default,matcher
+URxvt.url-launcher    : /usr/bin/chromium
+URxvt.matcher.button  : 1
+URxvt.scrollBar       : false
 
-URxvt.font:    xft:Consolas:pixelsize=12
-Xft.antialias: 1
-Xft.autohint:  0
-Xft.dpi:       96
-Xft.hinting:   1
-Xft.hintstyle: hintfull
-Xft.lcdfilter: lcddefault
-Xft.rgba:      rgb
+! URxvt.font            : xft:Consolas:pixelsize=12
+URxvt.font            : -*-tewi-medium-*-*-*-11-*-*-*-*-*-*-*
+Xft.antialias         : 1
+Xft.autohint          : 0
+Xft.dpi               : 96
+Xft.hinting           : 1
+Xft.hintstyle         : hintfull
+Xft.lcdfilter         : lcddefault
+Xft.rgba              : rgb
 
-URxvt*termName:     rxvt-256color
-URxvt*xftAntialias: true
+URxvt*termName        : rxvt-256color
+URxvt*xftAntialias    : true
 
-URxvt*background: #1D1F21
-URxvt*foreground: #C5C8C6
-URxvt*color0:     #282A2E
-URxvt*color1:     #A54242
-URxvt*color2:     #8C9440
-URxvt*color3:     #DE935F
-URxvt*color4:     #5F819D
-URxvt*color5:     #85678F
-URxvt*color6:     #5E8D87
-URxvt*color7:     #707880
-URxvt*color8:     #373B41
-URxvt*color9:     #CC6666
-URxvt*color10:    #B5BD68
-URxvt*color11:    #F0C674
-URxvt*color12:    #81A2BE
-URxvt*color13:    #B294BB
-URxvt*color14:    #8ABEB7
-URxvt*color15:    #C5C8C6
+URxvt*background      : #1D1F21
+URxvt*foreground      : #C5C8C6
+URxvt*color0          : #282A2E
+URxvt*color1          : #A54242
+URxvt*color2          : #8C9440
+URxvt*color3          : #DE935F
+URxvt*color4          : #5F819D
+URxvt*color5          : #85678F
+URxvt*color6          : #5E8D87
+URxvt*color7          : #707880
+URxvt*color8          : #373B41
+URxvt*color9          : #CC6666
+URxvt*color10         : #B5BD68
+URxvt*color11         : #F0C674
+URxvt*color12         : #81A2BE
+URxvt*color13         : #B294BB
+URxvt*color14         : #8ABEB7
+URxvt*color15         : #C5C8C6
