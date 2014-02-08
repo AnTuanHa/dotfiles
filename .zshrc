@@ -3,7 +3,7 @@
 # ------------------
 
 # Ruby
-export PATH=$PATH:~/.gem/ruby/2.0.0/bin
+export PATH=$PATH:~/.gem/ruby/2.1.0/bin
 
 # BSPWM
 export PATH=$PATH:/home/an/.config/scripts
