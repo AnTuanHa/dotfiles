@@ -92,7 +92,7 @@ super + Escape
 
 # Start terminal
 super + Return
-    urxvt
+    urxvtc
 
 # Start dmenu
 super + space
