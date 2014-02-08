@@ -74,6 +74,7 @@ NeoBundle 'Shougo/vimproc', {
 " NeoComplete requires vim to be compiled with lua support
 if has('lua')
     NeoBundle 'Shougo/neocomplete.vim'
+
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -107,14 +108,49 @@ NeoBundle 'Shougo/neosnippet'
     \ "\<Plug>(neosnippet_expand_or_jump)"
     \: "\<TAB>"
 
+NeoBundle 'Shougo/neosnippet-snippets'
+
 NeoBundleLazy 'scrooloose/syntastic'
     autocmd FileType c,cpp,java,python,lua,html,css NeoBundleSource syntastic
+
+    let g:syntastic_cpp_compiler = 'clang++'
+    let g:syntastic_cpp_compiler_options = '-std=c++11'
 
 NeoBundleLazy 'rmartinho/vim-cpp11'
     autocmd FileType c,cpp NeoBundleSource vim-cpp11
 
 NeoBundle 'Raimondi/delimitMate'
     autocmd FileType vim let b:loaded_delimitMate = 1
+
+NeoBundle 'kien/ctrlp.vim'
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_working_path_mode = 'ra'
+    let g:ctrlp_custom_ignore = {
+                \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+                \ 'file': '\v\.(exe|so|dll|swp|bak|pyc|class)$',
+                \ }
+
+" C++ autocompletion with NeoComplete
+NeoBundle 'osyo-manga/vim-reunions'
+NeoBundle 'osyo-manga/vim-marching'
+    let g:marching_clang_command = "clang++"
+    let g:marching_clang_command_option="-std=c++11"
+    let g:marching_include_paths = [
+        \ "/usr/include/c++/4.8.2/",
+        \ "/usr/include/c++/4.8.2/x86_64-unknown-linux-gnu",
+        \ ]
+    let g:marching_enable_neocomplete = 1
+
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+    endif
+
+    let g:neocomplete#force_omni_input_patterns.cpp =
+        \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+
+    imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
+    imap <buffer> <C-x><C-x><C-o> <Plug>(marching_force_start_omni_complete)
 
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'jnurmine/Zenburn'
@@ -202,7 +238,7 @@ set ignorecase " Case-Insensitive when searching
 set smartcase  " Except if there's a capital letter
 
 " Time it takes to update gui while not doing anything (milliseconds)
-set updatetime=500
+set updatetime=200
 
 " Fixes delay after pressing ESC and then O
 set timeout timeoutlen=1000 ttimeoutlen=100
@@ -226,8 +262,8 @@ autocmd FileType c,cpp,java,python,lua,vim autocmd BufWritePre <buffer> :%s/\s\+
 " Detect markdown files and set the correct filetype
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" Fuzzy file search (Control + P, from ctrlp plugin)
-nnoremap <C-p> :<C-u>Unite -start-insert -buffer-name=files file_mru buffer file file_rec/async<cr>
+" Unite Fuzzy file search (Control + P, from ctrlp plugin)
+" nnoremap <C-p> :<C-u>Unite -start-insert -buffer-name=files file_mru buffer file_rec/async<cr>
 
 " Find file with pattern (Leader + (a)g)
 nnoremap <leader>a :<C-u>Unite grep:.<cr>
