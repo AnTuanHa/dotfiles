@@ -2,7 +2,7 @@
 # /home/an/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
-# Generated on Mon Sep 23 22:07:30 2013
+# Generated on Fri Feb  7 20:57:06 2014
 #
 
 # ConfigProperties:
@@ -31,10 +31,11 @@ Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 0/LogAnisoAppControlled=1
 0/OpenGLImageSettings=3
 0/FSAAAppEnhanced=0
-0/DigitalVibrance[DFP-0]=0
-0/ColorSpace[DFP-0]=0
-0/ColorRange[DFP-0]=0
-0/XVideoSyncToDisplay=65536
+0/XVideoSyncToDisplayID=DVI-I-1
+[DPY:DVI-I-0]/Dithering=0
+[DPY:DVI-I-0]/DitheringMode=0
+[DPY:DVI-I-0]/DitheringDepth=0
+[DPY:DVI-I-0]/SynchronousPaletteUpdates=0
 [DPY:DVI-I-1]/RedBrightness=0.000000
 [DPY:DVI-I-1]/GreenBrightness=0.000000
 [DPY:DVI-I-1]/BlueBrightness=0.000000
@@ -44,3 +45,26 @@ Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 [DPY:DVI-I-1]/RedGamma=1.000000
 [DPY:DVI-I-1]/GreenGamma=1.000000
 [DPY:DVI-I-1]/BlueGamma=1.000000
+[DPY:DVI-I-1]/Dithering=0
+[DPY:DVI-I-1]/DitheringMode=0
+[DPY:DVI-I-1]/DitheringDepth=0
+[DPY:DVI-I-1]/DigitalVibrance=0
+[DPY:DVI-I-1]/ColorSpace=0
+[DPY:DVI-I-1]/ColorRange=0
+[DPY:DVI-I-1]/SynchronousPaletteUpdates=0
+[DPY:HDMI-0]/Dithering=0
+[DPY:HDMI-0]/DitheringMode=0
+[DPY:HDMI-0]/DitheringDepth=0
+[DPY:HDMI-0]/SynchronousPaletteUpdates=0
+[DPY:DP-0]/Dithering=0
+[DPY:DP-0]/DitheringMode=0
+[DPY:DP-0]/DitheringDepth=0
+[DPY:DP-0]/SynchronousPaletteUpdates=0
+[DPY:DVI-D-0]/Dithering=0
+[DPY:DVI-D-0]/DitheringMode=0
+[DPY:DVI-D-0]/DitheringDepth=0
+[DPY:DVI-D-0]/SynchronousPaletteUpdates=0
+[DPY:DP-1]/Dithering=0
+[DPY:DP-1]/DitheringMode=0
+[DPY:DP-1]/DitheringDepth=0
+[DPY:DP-1]/SynchronousPaletteUpdates=0
