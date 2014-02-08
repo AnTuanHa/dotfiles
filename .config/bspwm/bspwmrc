@@ -14,11 +14,11 @@ bspc config focus_follows_pointer true
 # -----
 # Rules
 # -----
-bspc rule -a Steam floating=on desktop=^9
+bspc rule -a Steam floating=true desktop=^9
 bspc rule -a ncmpcpp desktop=^8
-bspc rule -a Mumble floating=on
-bspc rule -a Gimp floating=on
-bspc rule -a feh floating=on
+bspc rule -a Mumble floating=true
+bspc rule -a Gimp floating=true
+bspc rule -a feh floating=true
 
 # ------------------
 # Autostart Programs
