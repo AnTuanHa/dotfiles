@@ -4,8 +4,7 @@ URxvt.url-launcher    : /usr/bin/chromium
 URxvt.matcher.button  : 1
 URxvt.scrollBar       : false
 
-! URxvt.font            : xft:Consolas:pixelsize=12
-URxvt.font            : -*-tewi-medium-*-*-*-11-*-*-*-*-*-*-*
+URxvt.font            : -*-gohufont-medium-r-*-*-11-*-*-*-*-*-iso10646-*
 Xft.antialias         : 1
 Xft.autohint          : 0
 Xft.dpi               : 96
