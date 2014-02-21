@@ -281,9 +281,6 @@ autocmd FileType c,cpp,java,python,lua,vim autocmd BufWritePre <buffer> :%s/\s\+
 " Detect markdown files and set the correct filetype
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" Unite Fuzzy file search (Control + P, from ctrlp plugin)
-" nnoremap <C-p> :<C-u>Unite -start-insert -buffer-name=files file_mru buffer file_rec/async<cr>
-
 " Find file with pattern (Leader + (a)g)
 nnoremap <leader>a :<C-u>Unite grep:.<cr>
 
