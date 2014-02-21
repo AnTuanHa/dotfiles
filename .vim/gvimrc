@@ -2,7 +2,7 @@
 if has("win16") || has("win32") || has('win64')
     set guifont=Consolas:h9
 else
-    set guifont=Consolas\ 9
+    set guifont=Ubuntu\ Mono\ 10
 endif
 
 " No toolbar, menu bar, and scroll bar in GVim
