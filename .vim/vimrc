@@ -131,15 +131,34 @@ NeoBundle 'kien/ctrlp.vim'
                 \ 'file': '\v\.(exe|so|dll|swp|bak|pyc|class)$',
                 \ }
 
+function! FindProjectRoot(lookFor)
+    let pathMaker='%:p'
+    while(len(expand(pathMaker))>len(expand(pathMaker.':h')))
+        let pathMaker=pathMaker.':h'
+        let fileToCheck=expand(pathMaker).'/'.a:lookFor
+        if filereadable(fileToCheck)||isdirectory(fileToCheck)
+            return expand(pathMaker)
+        endif
+    endwhile
+    return 0
+endfunction
+
+let g:project_root=FindProjectRoot('.git')
+let g:project_root_include=g:project_root
+let g:project_root_include.='/*'
+
 " C++ autocompletion with NeoComplete
 NeoBundle 'osyo-manga/vim-reunions'
 NeoBundle 'osyo-manga/vim-marching'
     let g:marching_clang_command = "clang++"
     let g:marching_clang_command_option="-std=c++11"
-    let g:marching_include_paths = [
-        \ "/usr/include/c++/4.8.2/",
-        \ "/usr/include/c++/4.8.2/x86_64-unknown-linux-gnu",
-        \ ]
+
+	let g:marching_include_paths = filter(
+        \	split(glob(g:project_root_include), '\n') +
+        \	split(glob('/usr/include/c++/*'), '\n') +
+        \	split(glob('/usr/include/c++/*/*'), '\n') +
+        \	split(glob('/usr/include/*/c++/*'), '\n'),
+        \	'isdirectory(v:val)')
     let g:marching_enable_neocomplete = 1
 
     if !exists('g:neocomplete#force_omni_input_patterns')
