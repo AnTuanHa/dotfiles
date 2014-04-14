@@ -92,7 +92,7 @@ super + Escape
 
 # Start terminal
 super + Return
-    urxvtc
+    urxvtc -geometry 80x24
 
 # Start dmenu
 super + space
