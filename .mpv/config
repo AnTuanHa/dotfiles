@@ -1,0 +1,31 @@
+# default configuration that applies to every file
+[default]
+
+# try to use high quality opengl output, with standard opengl, classic xv, and
+# wayland as fallbacks note: opengl has numerous quality/performance trade-off
+# options.  as per the mpv(1), "opengl-hq" is just an alias for
+# "opengl:lscale=lanczos2:dither-depth=auto:fbo-format=rgb16"
+vo=opengl-hq,opengl,xv,wayland
+
+# use pulseaudio for audio output
+ao=pulse
+
+# Disable softvol usage, and always use the system mixer if available.
+softvol=no
+
+# prefer using 2.0 channels audio (defaults to 2 - see mpv --channels=help) 
+# mixing is handled by libavcodec unless using "--af-add=pan" (see below)
+channels=2
+
+# set the window title using the media filename (see Property Expansion section
+# of mpv(1))
+title="${filename}"
+
+# disable screensaver
+stop-screensaver="yes"
+
+# correct pitch when speed is faster or slower than 1.0
+af=scaletempo
+
+# gapless audio play
+gapless-audio

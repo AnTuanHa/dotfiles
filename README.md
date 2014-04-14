@@ -4,6 +4,7 @@
 zsh          (Shell)  
 vim          (Text Editor)  
 tmux         (Terminal Multiplexer)  
+mpv          (Media Player, fork of mplayer2 and mplayer)  
 mpd          (Music Player Daemon)  
 ncmpcpp      (Music Player)  
 git          (Version Control System)  
