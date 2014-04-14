@@ -21,7 +21,7 @@ endif
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
-    " Use Ag (Silver Searcher) instead of Ack when using Unite's search feature
+    " Use Ag (Silver Searcher) instead of grep when using Unite's search feature
     if executable('ag')
         let g:unite_source_grep_command='ag'
         let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --hidden'
@@ -131,6 +131,11 @@ NeoBundle 'kien/ctrlp.vim'
                 \ 'file': '\v\.(exe|so|dll|swp|bak|pyc|class)$',
                 \ }
 
+    " Use Ag (silver searcher) if possible over default vim's globpath
+    if executable('ag')
+        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    endif
+
 function! FindProjectRoot(lookFor)
     let pathMaker='%:p'
     while(len(expand(pathMaker))>len(expand(pathMaker.':h')))
@@ -155,6 +160,7 @@ NeoBundle 'osyo-manga/vim-marching'
 
 	let g:marching_include_paths = filter(
         \	split(glob(g:project_root_include), '\n') +
+        \	split(glob('/usr/local/include/*'), '\n') +
         \	split(glob('/usr/include/c++/*'), '\n') +
         \	split(glob('/usr/include/c++/*/*'), '\n') +
         \	split(glob('/usr/include/*/c++/*'), '\n'),
@@ -241,6 +247,11 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 autocmd FileType html,css setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType c setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab textwidth=80 equalprg=indent\ -kr\ -i8\ -l80
+
+" Show tabs and end of line characters
+set list
+set listchars=tab:▸\ ,eol:¬
 
 " Rewrap lines to the 120th column
 set textwidth=120
