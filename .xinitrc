@@ -20,10 +20,10 @@ compton &
 xsetroot -cursor_name left_ptr &
 
 # Set background image
-hsetroot -tile ~/.config/background.jpg &
+hsetroot -tile ~/.config/background.png &
 
 # Start Window Manager
-sxhkd &
+sxhkd -f 100 &
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 exec bspwm -s "$PANEL_FIFO" -p "W"
