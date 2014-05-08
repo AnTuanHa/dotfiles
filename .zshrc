@@ -94,4 +94,4 @@ PROMPT+="%{$fg[green]%} [%~]"                # Working Directory
 PROMPT+='%{$fg[yellow]%} ${vcs_info_msg_0_}' # Version Control System
 PROMPT+="
 "                                            # New Line
-PROMPT+="%{$reset_color%}$ "                 # $
+PROMPT+="%{$reset_color%}> "                 # $
