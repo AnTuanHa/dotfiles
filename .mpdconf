@@ -440,7 +440,7 @@ replaygain			"track"
 # If file or directory names do not display correctly for your locale then you 
 # may need to modify this setting.
 #
-#filesystem_charset		"UTF-8"
+filesystem_charset		"UTF-8"
 #
 # This setting controls the encoding that ID3v1 tags should be converted from.
 #
