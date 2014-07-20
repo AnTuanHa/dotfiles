@@ -16,14 +16,19 @@ xrdb ~/.Xresources
 # Start compositing manager
 compton &
 
+# Start notification daemon
+dunst &
+
 # Set cursor
 xsetroot -cursor_name left_ptr &
 
 # Set background image
-hsetroot -tile ~/.config/background.png &
+hsetroot -tile ~/.config/screenshots/background.png &
+
+# Add uushi and lemon fonts
+xset +fp ~/.fonts/
+xset fp rehash
 
 # Start Window Manager
 sxhkd -f 100 &
-[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
-mkfifo "$PANEL_FIFO"
 exec bspwm -s "$PANEL_FIFO" -p "W"
