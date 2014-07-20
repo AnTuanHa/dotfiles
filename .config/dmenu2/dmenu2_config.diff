@@ -1,0 +1,36 @@
+diff -r 36cb94a16edf dmenu.c
+--- a/dmenu.c	Tue Jul 08 20:02:47 2014 +0100
++++ b/dmenu.c	Sun Jul 20 18:35:09 2014 -0400
+@@ -61,21 +61,21 @@
+ static int bh, mw, mh;
+ static int inputw, promptw;
+ static size_t cursor = 0;
+-static const char *font = NULL;
+-static const char *prompt = NULL;
+-static const char *normbgcolor = NULL;
+-static const char *normfgcolor = NULL;
+-static const char *selbgcolor  = NULL;
+-static const char *selfgcolor  = NULL;
+-static const char *dimcolor = NULL; 
+-static const char *undercolor = NULL;
++static const char *font = "-benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1";
++static const char *prompt = ">";
++static const char *normbgcolor = "#1D1F21";
++static const char *normfgcolor = "#707880";
++static const char *selbgcolor  = "#A54242";
++static const char *selfgcolor  = "#C5C8C6";
++static const char *dimcolor    = "#00ffff";
++static const char *undercolor  = "#000000";
+ static char *name = "dmenu";
+ static char *class = "Dmenu";
+ static char *dimname = "dimenu";
+-static unsigned int lines = 0, line_height = 0, under_height = 0;
++static unsigned int lines = 5, line_height = 0, under_height = 0;
+ static int xoffset = 0;
+-static int yoffset = 0;
+-static int width = 0;
++static int yoffset = 18;
++static int width = 250;
+ #ifdef XINERAMA
+ static int snum = -1;
+ #endif
