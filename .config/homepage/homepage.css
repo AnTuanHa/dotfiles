@@ -1,0 +1,89 @@
+@font-face {
+  font-family:'gohufont';
+  font-weight:400;
+  font-style:normal;
+}
+
+* {
+  -moz-box-sizing:border-box;
+}
+
+body {
+  background-image:url(bg.png);
+  background:0 0 center cover fixed;
+}
+
+.container {
+  text-align:center;
+  width:100%;
+  height:100%;
+  position:fixed;
+}
+
+.container:before {
+  content:'';
+  display:inline-block;
+  height:100%;
+  vertical-align:middle;
+  margin-right:-.25em;
+}
+
+.wrapper {
+  display:inline-block;
+  vertical-align:middle;
+  background-color:rgba(29,31,33,1.00);
+  border:solid 5px rgba(170,170,170,0.25);
+  color:#C5C8C6;
+  font-family:'gohufont';
+  font-size:14px;
+}
+
+.wrapper .name {
+  font-size:4rem;
+  width:100%;
+  margin:0 auto;
+}
+
+.wrapper ul {
+  float:left;
+  list-style:none;
+  padding:32px;
+}
+
+.wrapper ul a {
+  color:#aaa;
+  text-decoration:none;
+}
+
+.wrapper ul a:hover {
+  color:#5F819D;
+}
+
+@media only screen and max-width 600px {
+  .container {
+    position:relative;
+  }
+
+  .wrapper {
+    width:70%;
+  }
+
+  .wrapper .name {
+    font-size:2rem;
+  }
+
+  .wrapper ul {
+    float:none;
+    clear:both;
+    margin:0 auto;
+    padding:16px;
+  }
+}
+
+ul.reddit {
+  color:#8C9440;
+}
+
+ul.main {
+  color:#A54242;
+}
