@@ -7,17 +7,23 @@ fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-flavor=${1:-bar}
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
 
-bspc config top_padding $PANEL_HEIGHT
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 clock -sf 'S%A, %B %d, %H:%M %P' > "$PANEL_FIFO" &
+conky > "$PANEL_FIFO" &
 
-case "$flavor" in
-	bar)
-		cat "$PANEL_FIFO" | panel_bar | bar -g "x18+0+0" -f "-*-gohufont-medium-r-*-*-11-*-*-*-*-*-iso10646-*" -u 2 -B "#FF1d1f21" -F "#FFc5c8c6" &
-		;;
-esac
+. panel_colors
+
+cat "$PANEL_FIFO" \
+	| panel_bar \
+	| bar \
+		-g "x18+0+0"\
+		-f "-benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1"\
+		-u 1\
+		-B "${COLOR_BACKGROUND}"\
+		-F "${COLOR_FOREGROUND}" &
 
 wait
