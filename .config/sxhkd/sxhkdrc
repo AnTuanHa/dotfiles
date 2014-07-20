@@ -14,9 +14,13 @@ super + shift + c
 super + shift + ctrl + c
 	bspc window -k
 
-# Balance all windows
+# Balance the split ratios of the tree so that all windows occupy the same area
 super + b
 	bspc desktop -B
+
+# Equalize/reset the split ratios of the tree of the selected desktop
+super + shift + b
+	bspc desktop -E
 
 # Focus between floating windows and tiled windows
 super + g
@@ -119,7 +123,7 @@ super + space
 
 # Start web browser
 super + alt + b
-	chromium
+	firefox
 
 # Take a screenshot
 Print
