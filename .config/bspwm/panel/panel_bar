@@ -8,7 +8,7 @@ while read -r line ; do
 	case $line in
 		S*)
 			# clock output
-			sys_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG}${line#?}%{B-}%{F-}"
+			sys_infos="%{F$COLOR_STATUS_FG}%{B$COLOR_STATUS_BG}\u2B96 ${line#?}%{B-}%{F-}"
 			;;
 		T*)
 			# xtitle output
@@ -72,5 +72,5 @@ while read -r line ; do
 			done
 			;;
 	esac
-	echo -e "%{B$COLOR_BACKGROUND}%{l} ${title}%{B$COLOR_BACKGROUND} %{c} ${wm_infos}%{B$COLOR_BACKGROUND} %{r} ${mpd_info}%{B$COLOR_BACKGROUND} %{F${COLOR_BLUE}}\u2B96%{F-} $sys_infos%{B$COLOR_BACKGROUND} "
+	echo -e "%{B$COLOR_BACKGROUND}%{l} ${title}%{B$COLOR_BACKGROUND} %{c} ${wm_infos}%{B$COLOR_BACKGROUND} %{r} ${mpd_info}%{B$COLOR_BACKGROUND} $sys_infos%{B$COLOR_BACKGROUND} "
 done
