@@ -1,6 +1,6 @@
 diff -r 36cb94a16edf dmenu.c
 --- a/dmenu.c	Tue Jul 08 20:02:47 2014 +0100
-+++ b/dmenu.c	Sun Jul 20 18:35:09 2014 -0400
++++ b/dmenu.c	Mon Jul 21 19:28:26 2014 -0400
 @@ -61,21 +61,21 @@
  static int bh, mw, mh;
  static int inputw, promptw;
@@ -17,7 +17,7 @@ diff -r 36cb94a16edf dmenu.c
 +static const char *prompt = ">";
 +static const char *normbgcolor = "#1D1F21";
 +static const char *normfgcolor = "#707880";
-+static const char *selbgcolor  = "#A54242";
++static const char *selbgcolor  = "#373b41";
 +static const char *selfgcolor  = "#C5C8C6";
 +static const char *dimcolor    = "#00ffff";
 +static const char *undercolor  = "#000000";
@@ -29,7 +29,7 @@ diff -r 36cb94a16edf dmenu.c
  static int xoffset = 0;
 -static int yoffset = 0;
 -static int width = 0;
-+static int yoffset = 18;
++static int yoffset = 11;
 +static int width = 250;
  #ifdef XINERAMA
  static int snum = -1;
