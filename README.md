@@ -22,4 +22,4 @@ Arch Linux + BSPWM
 + conky - Used for displaying currently playing song
 
 Current Setup
-![Screenshot](https://raw.githubusercontent.com/zero57/dotfiles/master/.config/screenshots/screenshot.png "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/zero57/dotfiles/master/.config/screenshots/screenshot2.png "Screenshot")
