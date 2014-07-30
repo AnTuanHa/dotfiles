@@ -23,7 +23,7 @@ dunst &
 xsetroot -cursor_name left_ptr &
 
 # Set background image
-hsetroot -tile ~/.config/screenshots/background.png &
+feh --no-fehbg --bg-scale ~/.config/screenshots/background.png &
 
 # Add uushi and lemon fonts
 xset +fp ~/.fonts/
