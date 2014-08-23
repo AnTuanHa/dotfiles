@@ -21,7 +21,7 @@ cat "$PANEL_FIFO" \
 	| panel_bar \
 	| bar \
 		-g "x11+0+0"\
-		-f "-benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1"\
+		-f "-benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1","-misc-fixed-medium-r-normal-ja-0-0-75-75-c-0-iso10646-1"\
 		-u 1\
 		-B "${COLOR_BACKGROUND}"\
 		-F "${COLOR_FOREGROUND}" &
