@@ -1,0 +1,11 @@
+# Images
+image/jpg; feh %s
+image/jpeg; feh %s
+image/pjpeg; feh %s
+image/png; feh %s
+
+# PDFs
+application/pdf; llpp %s
+
+# HTML
+text/html; firefox %s

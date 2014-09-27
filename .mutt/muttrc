@@ -1,0 +1,94 @@
+source ~/.mutt/color
+
+set mbox_type = Maildir
+set folder    = ~/.mail          # mailbox location
+set spoolfile = "+gmail/INBOX"   # default inbox location
+set postponed = "+gmail/drafts"  # postponed mails location
+set mbox      = "+gmail/archive" # all mail location
+
+# mail boxes to show up in sidebar
+mailboxes +gmail/INBOX \
+          +gmail/archive \
+          +gmail/linux-kernel \
+          +gmail/kernel-janitors \
+          +gmail/sent \
+          +gmail/drafts \
+          +gmail/Personal \
+          +gmail/Games
+
+# don't let Mutt save every mail you send, gmail does this already
+unset record
+
+set sort=threads
+set sort_aux=reverse-last-date-received
+
+unset move          # gmail already does this
+set delete          # don't ask to delete
+unset confirmappend # don't ask to append
+unset mark_old      # unnecessary, read/new is enough
+
+set realname="An Ha"
+set from="zero579911@gmail.com"
+set edit_headers                # show headers when composing
+set askcc
+unset mime_forward              # forward attachments as part of body
+set include                     # include messages in replies
+set forward_quote               # include messages in forwards
+
+set send_charset="utf-8"
+set sendmail="/usr/bin/msmtp -a zero579911" # external program to send mail
+set sendmail_wait = 0                       # wait until it finishes sending,
+                                            # rather than a background process
+
+set sidebar_delim = '  │'
+set sidebar_visible = yes
+set sidebar_width = 24
+set sidebar_shortpath = yes
+
+set status_chars = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+set editor="vim"
+
+# don't collapse on an unread message
+set uncollapse_jump
+
+# faster folder switching
+set sleep_time = 0
+
+# setup goobook
+set query_command="goobook -c ~/.mutt/goobookrc query '%s'"
+bind editor <Tab> complete-query # autocomplete on tab key instead of CTRL-T
+
+bind pager j next-line
+bind pager k previous-line
+
+bind index gg first-entry
+bind index G last-entry
+bind pager gg top
+bind pager G bottom
+
+bind index,pager R group-reply
+
+# Update mail
+macro index o \
+        "<shell-escape>offlineimap -o -q -f INBOX<enter>" "run offlineimap to sync inbox"
+macro index O \
+        "<shell-escape>offlineimap -o<enter>" "run offlineimap to sync all mail"
+
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+bind index,pager <down> sidebar-next
+bind index,pager <up> sidebar-prev
+bind index,pager <right> sidebar-open
+
+set mailcap_path = ~/.mutt/mailcap
+bind attach <return> view-mailcap
+
+bind compose p postpone-message
+bind index p recall-message
+
+bind index,pager N search-opposite
+
+macro index <ESC>R "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"

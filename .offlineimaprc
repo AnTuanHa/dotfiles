@@ -1,0 +1,43 @@
+[general]
+accounts = zero579911
+ui = ttyui
+pythonfile = ~/.mutt/offlineimap.py
+fsync = False
+
+[Account zero579911]
+localrepository = zero579911_local
+remoterepository = zero579911_remote
+status_backend = sqlite
+
+[Repository zero579911_local]
+type = Maildir
+localfolders = ~/.mail/gmail
+nametrans = lambda folder: {'spam':      '[Gmail]/Spam',
+                            'sent':      '[Gmail]/Sent Mail',
+                            'flagged':   '[Gmail]/Starred',
+                            'trash':     '[Gmail]/Trash',
+                            'important': '[Gmail]/Important',
+                            'archive':   '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+[Repository zero579911_remote]
+type = Gmail
+maxconnections = 2
+remoteuser = zero579911@gmail.com
+remotepasseval = keyring.get_password("gmail","zero579911@gmail.com")
+realdelete = no
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+nametrans = lambda folder: {'[Gmail]/Spam':      'spam',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred':   'flagged',
+                            '[Gmail]/Trash':     'trash',
+                            '[Gmail]/Important': 'important',
+                            '[Gmail]/All Mail':  'archive',
+                            }.get(folder, folder)
+
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             '[Gmail]/Starred',
+                                             ]
