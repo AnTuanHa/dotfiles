@@ -1,5 +1,5 @@
 # Start systemd as a user
-exec systemd --user &
+# exec systemd --user &
 
 # Load NVIDIA settings ~/.nvidia-settings-rc
 nvidia-settings --load-config-only
@@ -23,7 +23,7 @@ dunst &
 xsetroot -cursor_name left_ptr &
 
 # Set background image
-feh --no-fehbg --bg-scale ~/.config/screenshots/background.png &
+feh --no-fehbg --bg-scale ~/.config/screenshots/scorched_earth.png &
 
 # Add uushi and lemon fonts
 xset +fp ~/.fonts/
