@@ -135,9 +135,9 @@ set ruler
 set cursorline
 
 " Specific tabs, spaces and textwidth for certain file types
-autocmd FileType html,css setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType html,css setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 autocmd FileType java setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-autocmd FileType c setlocal tabstop=8 softtabstop=0 shiftwidth=8 noexpandtab textwidth=80 equalprg=indent\ -kr\ -i8\ -l80
+autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab textwidth=80 equalprg=indent\ -kr\ -i8\ -l80
 autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab textwidth=120
 
 " Show tabs and end of line characters
