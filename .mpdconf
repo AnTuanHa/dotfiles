@@ -276,7 +276,14 @@ input {
 #
 audio_output {
 	type		"pulse"
-    name		"pulseaudio"
+	name		"pulseaudio"
+	sink		"combined"
+}
+audio_output {
+	type            "fifo"
+	name            "MPD FIFO"
+        path            "/tmp/mpd.fifo"
+        format          "48000:16:1"
 }
 #
 # An example of a winmm output (Windows multimedia API).
@@ -444,7 +451,7 @@ filesystem_charset		"UTF-8"
 #
 # This setting controls the encoding that ID3v1 tags should be converted from.
 #
-#id3v1_encoding			"ISO-8859-1"
+id3v1_encoding			"UTF-8"
 #
 ###############################################################################
 
