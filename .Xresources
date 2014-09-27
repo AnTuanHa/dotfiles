@@ -5,10 +5,13 @@ URxvt.url-launcher    : /usr/bin/firefox
 URxvt.matcher.button  : 1
 URxvt.scrollBar       : false
 
-URxvt.font            : -benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1
-URxvt.boldFont        : -benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1
-URxvt.italicFont      : -benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1
-URxvt.bolditalicFont  : -benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+#define normal -benis-uushi-medium-r-normal--11-90-75-75-p-58-iso10646-1, \
+               -misc-fixed-medium-r-normal-ja-0-0-75-75-c-0-iso10646-1
+
+URxvt.font            : normal
+URxvt.boldFont        : normal
+URxvt.italicFont      : normal
+URxvt.bolditalicFont  : normal
 
 URxvt*background      : #1D1F21
 URxvt*foreground      : #C5C8C6
