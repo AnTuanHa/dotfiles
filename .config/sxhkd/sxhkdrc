@@ -4,7 +4,7 @@
 
 # Exits window manager back to tty
 super + shift + q
-	bspc quit && pkill bar && pkill panel && pkill redshift
+	bspc quit && pkill bar && pkill panel && pkill panel_bar && pkill redshift
 
 # Closes focused window
 super + shift + c
