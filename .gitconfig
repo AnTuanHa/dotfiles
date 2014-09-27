@@ -9,5 +9,7 @@
 	editor = vim
 	excludesfile = /home/an/.gitignore
 [alias]
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    ll = log --stat --abbrev-commit
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	ll = log --stat --abbrev-commit
+[sendemail]
+	smtpserver = /usr/bin/msmtp
