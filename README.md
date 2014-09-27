@@ -20,6 +20,10 @@ Arch Linux + BSPWM
 + dunst - A notification daemon
 + firefox - A web browser
 + conky - Used for displaying currently playing song
++ mutt - For mail
++ offlineimap - To download mail
++ goobook - To get google contacts in mutt
++ msmtp - To send mail
 
 Current Setup
 ![Screenshot](https://raw.githubusercontent.com/zero57/dotfiles/master/.config/screenshots/screenshot2.png "Screenshot")
