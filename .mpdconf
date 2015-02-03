@@ -10,7 +10,7 @@
 # be disabled and audio files will only be accepted over ipc socket (using
 # file:// protocol) or streaming files over an accepted protocol.
 #
-music_directory		"~/music"
+music_directory		"/media/music"
 #
 # This setting sets the MPD internal playlist directory. The purpose of this
 # directory is storage for playlists created by MPD. The server will use 
@@ -151,7 +151,7 @@ port				"6600"
 # If this setting is set to "yes", service information will be published with
 # Zeroconf / Avahi.
 #
-#zeroconf_enabled		"yes"
+zeroconf_enabled		"no"
 #
 # The argument to this setting will be the Zeroconf / Avahi unique name for
 # this MPD server on the network.
@@ -351,7 +351,7 @@ audio_output {
 # See <http://www.replaygain.org> for more details about ReplayGain.
 # This setting is off by default.
 #
-replaygain			"track"
+#replaygain			"track"
 #
 # This setting sets the pre-amp used for files that have ReplayGain tags. By
 # default this setting is disabled.
