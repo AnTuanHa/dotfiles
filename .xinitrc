@@ -23,7 +23,7 @@ dunst &
 xsetroot -cursor_name left_ptr &
 
 # Set background image
-feh --no-fehbg --bg-scale ~/.config/screenshots/scorched_earth.png &
+feh --no-fehbg --bg-scale ~/.config/screenshots/cloudy.png &
 
 # Add uushi and lemon fonts
 xset +fp ~/.fonts/
