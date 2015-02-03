@@ -9,4 +9,4 @@ mpd_port 6600
 
 TEXT
 
-M${if_mpd_playing}${execi 1800 echo -e '\u2B95'} ${scroll 30 1 ${mpd_smart}} $endif
+M${if_mpd_playing}${execi 1800 echo -e '\u2B6F'} ${scroll 30 1 ${mpd_smart}} $endif
