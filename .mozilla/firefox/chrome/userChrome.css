@@ -26,13 +26,13 @@ toolbarbutton#new-tab-button,
 
 tabs#tabbrowser-tabs, tabs#tabbrowser-tabs * {
 	-moz-appearance: none !important;
-	border-radius: 0px !important; 
+	border-radius: 0px !important;
 	border: none !important;
 	border-bottom: 0px none !important;
 	background-image: none !important;
 	margin-top: 0px !important;
 	max-height: 14px !important;
-	min-height: 14px !important;        
+	min-height: 14px !important;
 }
 
 tabs#tabbrowser-tabs {
@@ -47,7 +47,7 @@ tabs#tabbrowser-tabs {
 }
 
 .tabbrowser-tab {
-	max-height: 12px !important;
+	max-height: 11px !important;
 	margin-left: 0px !important;
 	padding-top: 2px !important;
 	color: #707880 !important;
@@ -69,7 +69,7 @@ tabs#tabbrowser-tabs {
 	margin-right: 3px !important;
 	margin-top: 2px !important;
 	font-size: 11px !important;
-	font-family: gohufont !important;
+	font-family: tewi !important;
 }
 
 /* Hide the new curved tab edges */

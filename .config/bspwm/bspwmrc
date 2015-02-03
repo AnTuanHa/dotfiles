@@ -4,7 +4,7 @@
 # bspwm config
 # ------------
 
-bspc config top_padding           11
+bspc config top_padding           12
 bspc config border_width          1
 bspc config window_gap            10
 bspc config split_ratio           0.50
@@ -22,6 +22,7 @@ bspc rule -a Mumble floating=true
 bspc rule -a Gimp floating=true
 bspc rule -a feh floating=true
 bspc rule -a mpv floating=true
+bspc rule -a VirtualBox floating=true
 
 # ------------------
 # Autostart Programs

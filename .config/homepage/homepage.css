@@ -1,5 +1,5 @@
 @font-face {
-  font-family:'gohufont';
+  font-family:'tewi';
   font-weight:400;
   font-style:normal;
 }
@@ -9,7 +9,7 @@
 }
 
 body {
-  background-image:url(non_non_biyori_summer.png);
+  background-image:url(bg.jpg);
   background:0 0 center cover fixed;
 }
 
@@ -34,8 +34,8 @@ body {
   background-color:rgba(29,31,33,1.00);
   border:solid 5px rgba(170,170,170,0.25);
   color:#C5C8C6;
-  font-family:'gohufont';
-  font-size:14px;
+  font-family:'tewi';
+  font-size:11px;
 }
 
 .wrapper .name {
