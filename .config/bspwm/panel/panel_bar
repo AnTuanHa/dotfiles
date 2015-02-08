@@ -16,7 +16,7 @@ while read -r line ; do
 			;;
 		M*)
 			# mpd output
-			mpd_info="%{F$COLOR_MPD_FG}%{B$COLOR_MPD_BG}${line#?}%{B-}%{F-}"
+			mpd_info="%{F$COLOR_MPD_FG}%{B$COLOR_MPD_BG}${line#?} %{B-}%{F-}"
 			;;
 		W*)
 			# bspwm internal state
