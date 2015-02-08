@@ -7,10 +7,10 @@ highlight -link=s_red_back Bell
 highlight -link=s_cyan Boolean color: red;
 highlight -link=s_blue Button display: inline-block; font-weight: normal; cursor: pointer; color: black; text-decoration: none;
 highlight -link=s_base1,s_base0 Comment color: gray;
-highlight -link=s_base1 CompDesc color: gray; width: 62%; padding-left: 1em;
+highlight -link=s_base3 CompDesc color: gray; width: 62%; padding-left: 1em;
 highlight CompItem:nth-child(2n+1) background: rgba(0, 43, 54, .04);
-highlight -link=s_base03,s_magenta_back CompItem[selected]
-highlight -link=s_base03,s_comp_title CompTitle
+highlight -link=s_base03,s_yellow CompItem[selected]
+highlight -link=s_base3,s_comp_title CompTitle
 highlight -link=s_comp_sep CompTitleSep height: 2px;
 highlight -link=s_base01 Disabled color: gray    !important;
 highlight Download:nth-child(2n+1) background: rgba(0, 43, 54, .04);
@@ -20,8 +20,8 @@ highlight -link=s_base2,s_base03_back EditorEditing
 highlight -link=s_base2,s_base03_back EditorEditing>*
 highlight -link=s_base03,s_red_back EditorError
 highlight -link=s_blue Enabled color: blue;
-highlight -link=s_base03,s_magenta_back ErrorMsg
-highlight -link=s_green Filter font-weight: normal;
+highlight -link=s_base03,s_red_back ErrorMsg
+highlight -link=s_base3 Filter font-weight: normal;
 highlight FontFixed font-family: "tewi" !important; font-size: 11px !important; font-weight: normal;
 highlight -link=s_blue_back FrameIndicator background-color: red; opacity: 0.5; z-index: 999999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
 highlight -link=s_blue Function color: navy;
@@ -60,11 +60,11 @@ highlight -link=s_base0,s_base03_back Message
 highlight -link=s_base01 ModeMsg
 highlight MoreMsg color: inherit !important; background: white       !important; background-color: inherit !important;
 highlight -link=s_blue,s_base03_back NonText color: blue; background: transparent !important; min-height: 16px; padding-left: 2px;
-highlight -link=s_base0,s_base03_back Normal
+highlight -link=s_base2,s_base03_back Normal
 highlight -link=s_blue Null color: blue;
 highlight -link=s_blue Number color: blue;
 highlight -link=s_green Object color: maroon;
-highlight -link=s_base1 Preview color: gray;
+highlight -link=s_base2 Preview color: gray;
 highlight -link=s_cyan Question
 highlight s_base0 color: #81A2BE !important;
 highlight s_base0_back background-color: #81A2BE !important;
@@ -84,8 +84,8 @@ highlight s_base3 color: #C5C8C6 !important;
 highlight s_base3_back background-color: #C5C8C6 !important;
 highlight s_blue color: #5F819D !important;
 highlight s_blue_back background-color: #5F819D !important;
-highlight s_comp_sep background: -moz-linear-gradient(60deg, #5E8D87, #1D1F21) !important;
-highlight s_comp_title background: -moz-linear-gradient(60deg, #81A2BE, #1D1F21) !important;
+highlight s_comp_sep background: -moz-linear-gradient(60deg, #1D1F21, #1D1F21) !important;
+highlight s_comp_title background: -moz-linear-gradient(60deg, #1D1F21, #1D1F21) !important;
 highlight s_cyan color: #5E8D87 !important;
 highlight s_cyan_back background-color: #5E8D87 !important;
 highlight s_green color: #8C9440 !important;
@@ -101,16 +101,16 @@ highlight s_violet_back background-color: #B294BB !important;
 highlight s_yellow color: #DE935F !important;
 highlight s_yellow_back background-color: #DE935F !important;
 highlight -link=s_base03,s_orange_back StatusLineBroken
-highlight -link=s_base03,s_violet_back StatusLineExtended
-highlight -link=s_base0,s_base02_back StatusLineNormal
-highlight -link=s_base03,s_blue_back StatusLineSecure
+highlight -link=s_base03_back,s_base3 StatusLineExtended
+highlight -link=s_base3,s_base03_back StatusLineNormal
+highlight -link=s_base03,s_base3_back StatusLineSecure
 highlight StatusQuestion color: inherit !important; background: transparent !important; background-color: inherit !important;
-highlight -link=s_base03,s_magenta_back StatusWarningMsg
+highlight -link=s_base03,s_red_back StatusWarningMsg
 highlight -link=s_base3 TabIconNumber cursor: default; width: 16px; margin: 0 2px 0 -18px !important; font-weight: normal; color: white; text-align: center; text-shadow: #1D1F21 -1px 0 1px, #1D1F21 0 1px 1px, #1D1F21 1px 0 1px, #1D1F21 0 -1px 1px;
 highlight -link=s_blue Tag color: blue;
 highlight -link=s_red Title color: magenta; font-weight: normal;
-highlight -link=s_base1 URL
-highlight -link=s_base1 URLExtra
+highlight -link=s_base3 URL
+highlight -link=s_base3 URLExtra
 highlight UsageItem:nth-of-type(2n) background: rgba(0, 43, 54, .04);
 highlight -link=s_base03,s_yellow_back WarningMsg
 set hintkeys=asdfg;lkjh
