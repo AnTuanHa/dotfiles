@@ -6,8 +6,8 @@ URxvt.matcher.button  : 1
 URxvt.scrollBar       : false
 
 #define normal -lucy-tewi2a-medium-r-normal--11-90-75-75-p-58-iso10646-1, \
-               -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1, \
-               -mplus-gothic-medium-r-normal--10-100-75-75-c-100-jisx0208.1990-0
+	       -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1, \
+ 	       -mplus-gothic-medium-r-normal--10-100-75-75-c-100-jisx0208.1990-0
 
 URxvt.font            : normal
 URxvt.boldFont        : normal
