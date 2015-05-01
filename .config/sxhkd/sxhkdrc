@@ -127,4 +127,4 @@ super + alt + b
 
 # Take a screenshot
 Print
-	scrot -q 100
+	scrot
