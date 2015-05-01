@@ -26,4 +26,4 @@ Arch Linux + BSPWM
 + msmtp - To send mail
 
 Current Setup
-![Screenshot](https://raw.githubusercontent.com/zero57/dotfiles/master/.config/screenshots/screenshot2.png "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/zero57/dotfiles/master/.config/screenshots/screenshot4.png "Screenshot")
