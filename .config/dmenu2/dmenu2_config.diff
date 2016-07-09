@@ -1,6 +1,6 @@
 diff -r 36cb94a16edf dmenu.c
 --- a/dmenu.c	Tue Jul 08 20:02:47 2014 +0100
-+++ b/dmenu.c	Mon Feb 02 23:20:56 2015 -0500
++++ b/dmenu.c	Fri Jul 08 21:09:09 2016 -0400
 @@ -61,21 +61,21 @@
  static int bh, mw, mh;
  static int inputw, promptw;
@@ -13,12 +13,12 @@ diff -r 36cb94a16edf dmenu.c
 -static const char *selfgcolor  = NULL;
 -static const char *dimcolor = NULL; 
 -static const char *undercolor = NULL;
-+static const char *font = "-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1";
++static const char *font = "Open Sans Semibold-10";
 +static const char *prompt = ">";
-+static const char *normbgcolor = "#1D1F21";
-+static const char *normfgcolor = "#707880";
-+static const char *selbgcolor  = "#373b41";
-+static const char *selfgcolor  = "#C5C8C6";
++static const char *normbgcolor = "#223355";
++static const char *normfgcolor = "#99AACC";
++static const char *selbgcolor  = "#556699";
++static const char *selfgcolor  = "#FBFEFF";
 +static const char *dimcolor    = "#00ffff";
 +static const char *undercolor  = "#000000";
  static char *name = "dmenu";
@@ -29,8 +29,107 @@ diff -r 36cb94a16edf dmenu.c
  static int xoffset = 0;
 -static int yoffset = 0;
 -static int width = 0;
-+static int yoffset = 12;
++static int yoffset = 20;
 +static int width = 250;
  #ifdef XINERAMA
  static int snum = -1;
  #endif
+@@ -171,7 +171,7 @@
+ 		else if (!strcmp(argv[i], "-o"))  /* opacity */
+ 			opacity = atof(argv[++i]);
+ 		else if (!strcmp(argv[i], "-dim"))  /* dim opacity */
+-			dimopacity = atof(argv[++i]);	
++			dimopacity = atof(argv[++i]);
+ 		else if (!strcmp(argv[i], "-dc")) /* dim color */
+ 			dimcolor = argv[++i];
+ 		else if (!strcmp(argv[i], "-uc")) /* underline color */
+@@ -384,7 +384,7 @@
+ 		drawrect(dc, curpos, (dc->h - dc->font.height)/2 + 1, 1, dc->font.height -1, True, normcol->FG);
+ 
+ 
+-    if(!quiet || strlen(text) > 0) {    
++    if(!quiet || strlen(text) > 0) {
+         if(lines > 0) {
+             /* draw vertical list */
+             dc->w = mw - dc->x;
+@@ -641,7 +641,7 @@
+ 				cursor = strlen(text);
+ 				match();
+ 			}
+-		} 
++		}
+ 		break;
+ 	}
+ 	drawmenu();
+@@ -750,7 +750,7 @@
+ 	size_t len;
+ 	Item *item;
+ 	char *pos;
+-	
++
+ 	len = strlen(text);
+ 	matches = matchend = NULL;
+ 	for(item = items; item && item->text; item++) {
+@@ -921,7 +921,7 @@
+ 			x = info[snum].x_org;
+ 			y = info[snum].y_org + (topbar ? yoffset : info[i].height - mh - yoffset);
+ 			mw = info[snum].width;
+-			
++
+ 			dimx = info[snum].x_org;
+ 			dimy = info[snum].y_org;
+ 			dimw = info[snum].width;
+@@ -966,10 +966,10 @@
+ 		x = 0;
+ 		y = topbar ? 0 : DisplayHeight(dc->dpy, screen) - mh - yoffset;
+ 		mw = DisplayWidth(dc->dpy, screen);
+-		
++
+ 		dimx = 0;
+ 		dimy = 0;
+-		dimw = WidthOfScreen(defScreen); 
++		dimw = WidthOfScreen(defScreen);
+ 		dimh = HeightOfScreen(defScreen);
+ 	}
+ 
+@@ -978,9 +978,9 @@
+ 	promptw = (prompt && *prompt) ? textw(dc, prompt) : 0;
+ 	inputw = MIN(inputw, mw/3);
+ 	match();
+-	
++
+ 	swa.override_redirect = True;
+-	
++
+ 	/* create dim window */
+ 	if(dimopacity > 0) {
+ 		swa.background_pixel = dimcol->BG;
+@@ -991,16 +991,16 @@
+ 	                    CWOverrideRedirect | CWBackPixel | CWEventMask, &swa);
+ 		XClassHint dimhint = { .res_name = dimname, .res_class = class };
+   	XSetClassHint(dc->dpy, dim, &dimhint);
+-  
++
+ 		dimopacity = MIN(MAX(dimopacity, 0), 1);
+   	unsigned int dimopacity_set = (unsigned int)(dimopacity * OPAQUE);
+   	XChangeProperty(dc->dpy, dim, XInternAtom(dc->dpy, OPACITY, False),
+ 											XA_CARDINAL, 32, PropModeReplace,
+ 											(unsigned char *) &dimopacity_set, 1L);
+-	
++
+ 		XMapRaised(dc->dpy, dim);
+ 	}
+-	
++
+ 	/* create menu window */
+ 	swa.background_pixel = normcol->BG;
+ 	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask;
+@@ -1016,7 +1016,7 @@
+   XChangeProperty(dc->dpy, win, XInternAtom(dc->dpy, OPACITY, False),
+ 											XA_CARDINAL, 32, PropModeReplace,
+ 											(unsigned char *) &opacity_set, 1L);
+-	
++
+ 	/* open input methods */
+ 	xim = XOpenIM(dc->dpy, NULL, NULL, NULL);
+ 	xic = XCreateIC(xim, XNInputStyle, XIMPreeditNothing | XIMStatusNothing,
