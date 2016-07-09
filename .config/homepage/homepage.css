@@ -1,6 +1,6 @@
 @font-face {
-  font-family:'tewi2a','tewi';
-  font-weight:400;
+  font-family:'Open Sans Semibold';
+  font-weight:600;
   font-style:normal;
 }
 
@@ -9,7 +9,7 @@
 }
 
 body {
-  background-image:url(bg.jpg);
+  background-color:#223355;
   background:0 0 center cover fixed;
 }
 
@@ -31,11 +31,12 @@ body {
 .wrapper {
   display:inline-block;
   vertical-align:middle;
-  background-color:rgba(29,31,33,1.00);
-  border:solid 5px rgba(170,170,170,0.25);
-  color:#C5C8C6;
-  font-family:'tewi2a','tewi';
-  font-size:11px;
+  background-color:#223355;
+  border:solid 5px;
+	border-color:#556699;
+  color:#FBFEFF;
+  font-family:'Open Sans Semibold';
+  font-size:10pt;
 }
 
 .wrapper .name {
@@ -51,12 +52,12 @@ body {
 }
 
 .wrapper ul a {
-  color:#aaa;
+  color:#FBFEFF;
   text-decoration:none;
 }
 
 .wrapper ul a:hover {
-  color:#5F819D;
+  color:#7788BB;
 }
 
 @media only screen and max-width 600px {
@@ -81,10 +82,11 @@ body {
 }
 
 .wrapper h1 {
-  font-family:'Source Han Sans';
-	color:#C5C8C6;
+  font-family:'Kozuka Gothic Pro M';
+	color:#FBFEFF;
   font-size:32pt;
 	padding: 0;
+	padding-top: 10px;
 	margin: 0;
 }
 
@@ -93,9 +95,9 @@ body {
 }
 
 ul.reddit {
-  color:#85678f;
+  color:#8BB3D9;
 }
 
 ul.main {
-  color:#A54242;
+  color:#8BB3D9;
 }
