@@ -1,6 +1,6 @@
 #! /bin/sh
 
-if [ $(pgrep -cx panel) -gt 1 ] ; then
+if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
 	printf "%s\n" "The panel is already running." >&2
 	exit 1
 fi
@@ -10,9 +10,9 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-bspc control --subscribe > "$PANEL_FIFO" &
-xtitle -sf 'T%s' > "$PANEL_FIFO" &
-clock -sf 'S%A, %x, %H:%M' > "$PANEL_FIFO" &
+bspc subscribe report > "$PANEL_FIFO" &
+xtitle -s -t 75 -f 'T%s' > "$PANEL_FIFO" &
+clock -sf 'S%A、%x、%H:%M' > "$PANEL_FIFO" &
 conky > "$PANEL_FIFO" &
 
 . panel_colors
@@ -20,10 +20,24 @@ conky > "$PANEL_FIFO" &
 cat "$PANEL_FIFO" \
 	| panel_bar \
 	| lemonbar \
-		-g "x12+0+0"\
-		-f "-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1","-misc-fixed-medium-r-normal-ja-0-0-75-75-c-0-iso10646-1"\
-		-u 1\
+		-n "$PANEL_WM_NAME"\
+		-g "x20+0+0"\
+		-f "Open Sans:size=10:style=Semibold:antialias=true"\
+		-f "DejaVu Sans Mono:size=9:style=Book:antialias=true"\
+		-f "Kozuka Gothic Pro:size=11:style=M:antialias=true"\
+		-f "Baekmuk Gulim:size=11:style=Regular:antialias=true"\
+		-u 2\
 		-B "${COLOR_BACKGROUND}"\
 		-F "${COLOR_FOREGROUND}" &
+
+# Keep lemonbar on top so that windows can overlap it
+wid=$(xdo id -a "$PANEL_WM_NAME")
+tries_left=20
+while [ -z "$wid" -a "$tries_left" -gt 0 ] ; do
+	sleep 0.05
+	wid=$(xdo id -a "$PANEL_WM_NAME")
+	tries_left=$((tries_left - 1))
+done
+[ -n "$wid" ] && xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$wid"
 
 wait
