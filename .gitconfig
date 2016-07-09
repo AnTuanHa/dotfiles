@@ -13,3 +13,5 @@
 	ll = log --stat --abbrev-commit
 [sendemail]
 	smtpserver = /usr/bin/msmtp
+[gitreview]
+	username = zero57
