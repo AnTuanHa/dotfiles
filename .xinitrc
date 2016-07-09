@@ -1,6 +1,3 @@
-# Start systemd as a user
-# exec systemd --user &
-
 # Load NVIDIA settings ~/.nvidia-settings-rc
 nvidia-settings --load-config-only
 
@@ -29,6 +26,9 @@ feh --no-fehbg --bg-scale ~/.config/screenshots/cloudy.png &
 xset +fp ~/.fonts/
 xset fp rehash
 
+# Load IBus
+ibus-daemon -drx
+
 # Start Window Manager
-sxhkd -f 100 &
+sxhkd &
 exec bspwm -s "$PANEL_FIFO" -p "W"
