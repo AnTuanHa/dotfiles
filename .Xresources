@@ -5,30 +5,39 @@ URxvt.url-launcher    : /usr/bin/firefox
 URxvt.matcher.button  : 1
 URxvt.scrollBar       : false
 
-#define normal -lucy-tewi2a-medium-r-normal--11-90-75-75-p-58-iso10646-1, \
-	       -lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1, \
- 	       -mplus-gothic-medium-r-normal--10-100-75-75-c-100-jisx0208.1990-0
+Xft.antialias: 1
+Xft.autohint:  0
+Xft.dpi:       96
+Xft.hinting:   1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba:      rgb
 
-URxvt.font            : normal
-URxvt.boldFont        : normal
-URxvt.italicFont      : normal
-URxvt.bolditalicFont  : normal
+#define normal xft:DejaVu Sans Mono:style=Book:size=9:antialias=true,xft:Kozuka Gothic Pro:style=M:antialias=true,xft:Baekmuk Gulim:style=Regular:antialias=true
+#define bolded xft:DejaVu Sans Mono:style=Bold:size=9:antialias=true,xft:Kozuka Gothic Pro:style=Bold:antialias=true,xft:Baekmuk Gulim:style=Bold:antialias=true
 
-URxvt*background      : #1D1F21
-URxvt*foreground      : #C5C8C6
-URxvt*color0          : #282A2E
-URxvt*color1          : #A54242
-URxvt*color2          : #8C9440
-URxvt*color3          : #DE935F
-URxvt*color4          : #5F819D
-URxvt*color5          : #85678F
-URxvt*color6          : #5E8D87
-URxvt*color7          : #707880
-URxvt*color8          : #373B41
-URxvt*color9          : #CC6666
-URxvt*color10         : #B5BD68
-URxvt*color11         : #F0C674
-URxvt*color12         : #81A2BE
-URxvt*color13         : #B294BB
-URxvt*color14         : #8ABEB7
-URxvt*color15         : #C5C8C6
+URxvt.font           : normal
+URxvt.boldFont       : bolded
+URxvt.italicFont     : normal
+URxvt.bolditalicFont : normal
+
+URxvt*background     : #223355
+URxvt*foreground     : #FBFEFF
+
+URxvt*color0         : #2F3969
+URxvt*color1         : #556699
+URxvt*color2         : #7788BB
+URxvt*color3         : #99AACC
+URxvt*color4         : #8BB3D9
+URxvt*color5         : #A5867B
+URxvt*color6         : #805F6B
+URxvt*color7         : #F6F9FA
+
+URxvt*color8         : #425094
+URxvt*color9         : #7188cc
+URxvt*color10        : #97aced
+URxvt*color11        : #bfd4ff
+URxvt*color12        : #b3daff
+URxvt*color13        : #cc907a
+URxvt*color14        : #b38495
+URxvt*color15        : #fbfeff
