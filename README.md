@@ -24,6 +24,3 @@ Arch Linux + BSPWM
 + offlineimap - To download mail
 + goobook - To get google contacts in mutt
 + msmtp - To send mail
-
-Current Setup
-![Screenshot](https://raw.githubusercontent.com/zero57/dotfiles/master/.config/screenshots/screenshot4.png "Screenshot")
