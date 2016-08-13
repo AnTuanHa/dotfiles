@@ -89,6 +89,17 @@ precmd () {
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
+# Autocompletion with arrow-keys
+zstyle ':completion:*' menu select
+
+# Better history searching with arrow keys
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # Zsh to use the same colors as ls
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
@@ -100,18 +111,18 @@ setopt prompt_subst
 
 # Prompt
 PROMPT=""
-PROMPT+="%{$fg[red]%}%n"                     # Username
+PROMPT+="%{$fg[green]%}%n"                     # Username
 PROMPT+="%{$reset_color%}@"                  # @
 PROMPT+="%{$fg[blue]%}%m"                    # Hostname
 PROMPT+="%{$reset_color%} in"                # In
-PROMPT+="%{$fg[green]%} [%~]"                # Working Directory
+PROMPT+="%{$fg[red]%} [%~]"                # Working Directory
 PROMPT+='%{$fg[yellow]%} ${vcs_info_msg_0_}' # Version Control System
 PROMPT+="
 "                                            # New Line
 PROMPT+="%{$reset_color%}> "                 # $
 
 # Vi mode, use bindkey -e for emacs mode
-bindkey -v
+bindkey -e
 
 bindkey -a u undo
 bindkey -a '^R' redo
@@ -158,3 +169,15 @@ zle -N zle-line-finish
 
 RPROMPT='${vim_mode}'
 RPROMPT2='${vim_mode}'
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+export MAVEN_OPTS="-Xmx8192m"
+source $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh
