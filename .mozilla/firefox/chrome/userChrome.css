@@ -4,8 +4,12 @@
 #appcontent,
 #appcontent > #content,
 #appcontent > #content > tabbox > tabpanels {
-	background: #223355 !important;
+	background: #282828 !important;
 }
+
+/* #main-window[stylish-url="about:blank"]:not([onclose^="PrintUtils"]):not([title^="Source Chart"]):not([chromehidden="menubar toolbar directories extrachrome "]) #content browser:not([src]) { */
+/* 	opacity: 0 !important; */
+/* } */
 
 a:active {
 	outline: none !important;
@@ -35,7 +39,7 @@ tabs#tabbrowser-tabs, tabs#tabbrowser-tabs * {
 }
 
 tabs#tabbrowser-tabs {
-	background: #223355 !important;
+	background: #282828 !important;
 	padding-top: 0px !important;
 	margin-left: 0px !important;
 	padding-top: 0px !important;
@@ -49,16 +53,16 @@ tabs#tabbrowser-tabs {
 	max-height: 11px !important;
 	margin-left: 0px !important;
 	padding-top: 1px !important;
-	color: #99AACC !important;
+	color: #928374 !important;
 	border-bottom: 0px none !important;
-	background: #223355 !important;
+	background: #282828 !important;
 	/*box-shadow: inset 0px -4px 2px rgba(0,0,0,0.1) !important;*/
 
 }
 
 .tabbrowser-tab[selected=true] {
-	color: #FBFEFF !important;
-	background: #223355 !important;
+	color: #ebdbb2 !important;
+	background: #282828 !important;
 	border-bottom: 0px none !important;
 	box-shadow: none !important;
 }
@@ -114,7 +118,7 @@ html {
 
 #nav-bar {
 	background-image: none !important;
-	background-color: #223355 !important;
+	background-color: #282828 !important;
 	border: none !important;
 	margin-bottom: 0 !important;
 	padding: 0 !important;
@@ -126,7 +130,7 @@ html {
 	border-radius: 1px 0 0 0 !important;
 	margin: 0 !important;
 	box-shadow: none !important;
-	color: #2F3969 !important;
+	color: #fb4934 !important;
 }
 #statusbar-display { display: none !important; }
 
@@ -138,8 +142,11 @@ html {
 #urlbar-stop-button { display: none; }
 #reader-mode-button { display: none; }
 
+/* hide appbutton */
+/* #appmenu-button-container, #appmenu-toolbar-button { display: none !important; } */
+
 #nav-bar {
-	/* background: #223355 !important; */
+	/* background: #282828 !important; */
 	/* border: 0px #FFFFFF!important; */
 	/* box-shadow: none !important; */
 	height: 26px !important;
@@ -151,8 +158,8 @@ html {
 }
 
 #urlbar {
-	background-color: #223355 !important;
-	color: #FBFEFF!important;
+	background-color: #282828 !important;
+	color: #ebdbb2!important;
 	text-align: center !important;
 	border-radius: none 0px !important;
 	border: none !important;
@@ -167,11 +174,11 @@ findbar {
 	position: fixed !important;
 	width: 100% !important;
 	bottom: 26px !important;
-	background-color: #223355 !important;
+	background-color: #282828 !important;
 	border: none 0px !important;
 	font-family: Open Sans Semibold !important;
 	font-size: 10pt !important;
-	color: #FBFEFF !important;
+	color: #ebdbb2 !important;
 }
 
 .findbar-container [anonid="highlight"],
@@ -181,7 +188,7 @@ findbar {
 }
 
 .findbar-container [anonid="find-status"] {
-	color: #FBFEFF !important;
+	color: #ebdbb2 !important;
 }
 
 .findbar-closebutton,
@@ -193,8 +200,8 @@ findbar {
 .findbar-textbox {
 	font-family: Open Sans Semibold !important;
 	font-size: 10pt !important;
-	color: #FBFEFF !important;
-	background-color: #223355 !important;
+	color: #ebdbb2 !important;
+	background-color: #282828 !important;
 }
 
 #content browser {
@@ -203,31 +210,31 @@ findbar {
 
 /* Action text such as "Switch to Tab" */
 .ac-action-text {
-	color: #8BB3D9 !important;
+	color: #83a598 !important;
 }
 
 .ac-action-text[selected="true"] {
-	background-color: #8BB3D9 !important;
-	color: #223355 !important;
+	background-color: #83a598 !important;
+	color: #282828 !important;
 }
 
 .ac-url-text {
-	color: #8BB3D9 !important;
+	color: #83a598 !important;
 }
 
 .ac-url-text[selected="true"] {
-	background-color: #8BB3D9 !important;
-	color: #223355 !important;
+	background-color: #83a598 !important;
+	color: #282828 !important;
 }
 
 #PopupAutoCompleteRichResult .autocomplete-richlistitem {
-	background-color: #223355 !important;
-	color: #FBFEFF !important;
+	background-color: #282828 !important;
+	color: #ebdbb2 !important;
 }
 
 #PopupAutoCompleteRichResult .autocomplete-richlistitem[selected="true"] {
-	background-color: #556699 !important;
-	color: #FBFEFF !important;
+	background-color: #d79921 !important;
+	color: #282828 !important;
 }
 
 .tabbrowser-tab [anonid="soundplaying-icon"] {
@@ -241,8 +248,8 @@ statuspanel {
 
 .statuspanel-label {
 	border: none !important;
-	background: #223355 !important;
-	color: #FBFEFF !important;
+	background: #282828 !important;
+	color: #ebdbb2 !important;
 	font-family: Open Sans Semibold !important;
 	font-size: 10pt !important;
 }

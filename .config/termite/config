@@ -1,0 +1,115 @@
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = DejaVu Sans Mono 9
+scrollback_lines = 10000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = off
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+browser = firefox
+#browser = xdg-open
+
+# set size hints for the window
+#size_hints = false
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+
+# [colors]
+# #cursor = #dcdccc
+# foreground = #FBFEFF
+# foreground_bold = #FBFEFF
+# background = #223355
+# 
+# # 20% background transparency (requires a compositor)
+# #background = rgba(63, 63, 63, 0.8)
+# 
+# # if unset, will reverse foreground and background
+# # highlight = #2f2f2f
+# 
+# # colors from color0 to color254 can be set
+# color0 = #2F3969
+# color1 = #556699
+# color2 = #7788BB
+# color3 = #99AACC
+# color4 = #8BB3D9
+# color5 = #A5867B
+# color6 = #805F6B
+# color7 = #F6F9FA
+# 
+# color8 = #425094
+# color9 = #7188cc
+# color10 = #97aced
+# color11 = #bfd4ff
+# color12 = #b3daff
+# color13 = #cc907a
+# color14 = #b38495
+
+[colors]
+# hard contrast: background = #1d2021
+background = #282828
+# soft contrast: background = #32302f
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
+
+# dark0 + gray
+color0 = #282828
+color8 = #928374
+
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
+
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
+
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
+
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
+
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
+
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
+
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
+
+[hints]
+#font = DejaVu Sans Mono 9
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s

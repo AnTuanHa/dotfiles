@@ -1,6 +1,21 @@
+diff -r 36cb94a16edf config.mk
+--- a/config.mk	Tue Jul 08 20:02:47 2014 +0100
++++ b/config.mk	Sat Aug 13 01:39:06 2016 -0400
+@@ -21,9 +21,9 @@
+ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${XFTLIBS}
+ 
+ # flags
+-CPPFLAGS = -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
++CPPFLAGS = -march=sandybridge -mtune=sandybridge -O2 -pipe -fPIC -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
+ #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
+-CFLAGS   = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
++CFLAGS   = -march=sandybridge -mtune=sandybridge -O2 -pipe -std=c99 -pedantic -Wall -Os -fPIC ${INCS} ${CPPFLAGS}
+ LDFLAGS  = -s ${LIBS}
+ 
+ # compiler and linker
 diff -r 36cb94a16edf dmenu.c
 --- a/dmenu.c	Tue Jul 08 20:02:47 2014 +0100
-+++ b/dmenu.c	Fri Jul 08 21:09:09 2016 -0400
++++ b/dmenu.c	Sat Aug 13 01:39:06 2016 -0400
 @@ -61,21 +61,21 @@
  static int bh, mw, mh;
  static int inputw, promptw;
@@ -15,10 +30,10 @@ diff -r 36cb94a16edf dmenu.c
 -static const char *undercolor = NULL;
 +static const char *font = "Open Sans Semibold-10";
 +static const char *prompt = ">";
-+static const char *normbgcolor = "#223355";
-+static const char *normfgcolor = "#99AACC";
-+static const char *selbgcolor  = "#556699";
-+static const char *selfgcolor  = "#FBFEFF";
++static const char *normbgcolor = "#282828";
++static const char *normfgcolor = "#928374";
++static const char *selbgcolor  = "#928374";
++static const char *selfgcolor  = "#ebdbb2";
 +static const char *dimcolor    = "#00ffff";
 +static const char *undercolor  = "#000000";
  static char *name = "dmenu";

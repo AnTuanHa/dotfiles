@@ -3,41 +3,22 @@
 " --------------------
 if has('vim_starting')
 	set nocompatible
-	if has("win16") || has("win32") || has("win64")
-		set runtimepath+=$VIM/bundle/neobundle.vim/
-	else
-		set runtimepath+=~/.vim/bundle/neobundle.vim/
-	endif
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-if has("win16") || has("win32") || has("win64")
-	call neobundle#rc(expand('$VIM/bundle/'))
-else
-	call neobundle#rc(expand('~/.vim/bundle/'))
-endif
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundleLazy 'scrooloose/syntastic'
-	autocmd FileType c,cpp,java,python,lua,html,css NeoBundleSource syntastic
+	autocmd FileType c,cpp,python,lua,html,css NeoBundleSource syntastic
 	let g:syntastic_c_compiler = 'clang'
 	let g:syntastic_cpp_compiler = 'clang++'
 	let g:syntastic_cpp_compiler_options = '-std=c++11'
 
-NeoBundle 'kien/ctrlp.vim'
-	let g:ctrlp_map = '<c-p>'
-	let g:ctrlp_cmd = 'CtrlP'
-	let g:ctrlp_working_path_mode = 'ra'
-	let g:ctrlp_custom_ignore = {
-				\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-				\ 'file': '\v\.(exe|so|dll|swp|bak|pyc|class)$',
-				\ }
-
-	" Use Ag (silver searcher) if possible over default vim's globpath
-	if executable('ag')
-		let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-	endif
+NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \[ ./install --all' }
+	nnoremap <silent> <c-p> :FZF<CR>
 
 " NeoComplete requires vim to be compiled with lua support
 if has('lua')
@@ -46,6 +27,8 @@ if has('lua')
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#enable_smart_case = 1
 	let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+	let g:neocomplete#enable_auto_close_preview = 1
 
 	let g:neocomplete#sources#dictionary#dictionaries = { 'default' : '' }
 	if !exists('g:neocomplete#keyword_patterns')
@@ -66,10 +49,11 @@ if has('lua')
 		\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
 	" Allow clang_complete and neocomplete to work together
-	let g:neocomplete#force_overwrite_completefunc = 1
+	" let g:neocomplete#force_overwrite_completefunc = 1
 	let g:clang_complete_auto = 0
 	let g:clang_auto_select = 0
-	let g:clang_use_library = 1
+	let g:clang_default_keymappings = 0
+	" let g:clang_use_library = 1
 endif
 
 NeoBundleLazy 'Rip-Rip/clang_complete'
@@ -77,10 +61,12 @@ NeoBundleLazy 'Rip-Rip/clang_complete'
 
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'morhetz/gruvbox'
+
+call neobundle#end()
 
 NeoBundleCheck
 
@@ -91,7 +77,10 @@ NeoBundleCheck
 filetype plugin indent on
 syntax on
 
+setglobal fileencoding=utf-8
 set encoding=utf-8
+set fileencodings=utf-8,euc-jp,sjis
+set termencoding=utf-8
 
 " Remap leader key from default backslash(\) to spacebar
 let mapleader=" "
@@ -135,10 +124,12 @@ set ruler
 set cursorline
 
 " Specific tabs, spaces and textwidth for certain file types
-autocmd FileType html,css setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+autocmd FileType html,css setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType java setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab textwidth=80 equalprg=indent\ -kr\ -i8\ -l80
 autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab textwidth=120
+autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " Show tabs and end of line characters
 set list
@@ -165,8 +156,8 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 let g:matchparen_insert_timeout=5
 
 " Color Scheme
-let g:hybrid_use_Xresources=1
-colorscheme hybrid
+set background=dark
+colorscheme gruvbox
 
 " Enable command-line completion
 set wildmenu
@@ -175,7 +166,8 @@ set wildignorecase
 set wildmode=list:full
 
 " Automatically remove trailing whitespace
-autocmd FileType c,cpp,java,python,lua,vim,html,css autocmd BufWritePre <buffer> :%s/\s\+$//e
+" autocmd FileType c,cpp,java,python,lua,vim,html,css autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,python,lua,vim autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Detect markdown files and set the correct filetype
 au BufRead,BufNewFile *.md set filetype=markdown

@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color:#223355;
+  background-color:#282828;
   background:0 0 center cover fixed;
 }
 
@@ -31,10 +31,10 @@ body {
 .wrapper {
   display:inline-block;
   vertical-align:middle;
-  background-color:#223355;
+  background-color:#282828;
   border:solid 5px;
-	border-color:#556699;
-  color:#FBFEFF;
+	border-color:#665c54;
+  color:#ebdbb2;
   font-family:'Open Sans Semibold';
   font-size:10pt;
 }
@@ -52,12 +52,12 @@ body {
 }
 
 .wrapper ul a {
-  color:#FBFEFF;
+  color:#ebdbb2;
   text-decoration:none;
 }
 
 .wrapper ul a:hover {
-  color:#7788BB;
+  color:#458588;
 }
 
 @media only screen and max-width 600px {
@@ -95,9 +95,9 @@ body {
 }
 
 ul.reddit {
-  color:#8BB3D9;
+  color:#83a598;
 }
 
 ul.main {
-  color:#8BB3D9;
+  color:#83a598;
 }

@@ -12,6 +12,7 @@ mkfifo "$PANEL_FIFO"
 
 bspc subscribe report > "$PANEL_FIFO" &
 xtitle -s -t 75 -f 'T%s' > "$PANEL_FIFO" &
+# LC_TIME="ja_JP.UTF-8" clock -sf 'S%A、%x、%H:%M' > "$PANEL_FIFO" &
 clock -sf 'S%A、%x、%H:%M' > "$PANEL_FIFO" &
 conky > "$PANEL_FIFO" &
 
