@@ -23,7 +23,6 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 # Rules
 # -----
 bspc rule -a Steam state=floating desktop=^9
-#bspc rule -a URxvt:ncmpcpp desktop=^8
 bspc rule -a ncmpcpp:ncmpcpp desktop=^8
 bspc rule -a Mumble state=floating
 bspc rule -a Gimp state=floating
@@ -38,8 +37,7 @@ bspc rule -a Thunar:thunar state=floating
 # ------------------
 # Autostart Programs
 # ------------------
-panel &
+yabar &
 redshift -c ~/.config/redshift.conf &
-#urxvt -name ncmpcpp -e ncmpcpp &
 termite --name="ncmpcpp" --class="ncmpcpp" -e ncmpcpp &
 steam &

@@ -31,4 +31,4 @@ ibus-daemon -drx
 
 # Start Window Manager
 sxhkd &
-exec bspwm -s "$PANEL_FIFO" -p "W"
+exec bspwm

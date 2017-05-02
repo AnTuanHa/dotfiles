@@ -2,7 +2,6 @@
 # .zshrc Config File
 # ------------------
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval $(dircolors -b ~/.dircolors)
 
 # Colourize ls' output
@@ -174,10 +173,11 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 export MAVEN_OPTS="-Xmx8192m"
 source $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh
+
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

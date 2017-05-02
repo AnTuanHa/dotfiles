@@ -1,0 +1,63 @@
+#! /bin/sh
+
+. ~/.config/yabar/scripts/colors
+
+bspc subscribe report | while read -r line ; do
+    wm=""
+    IFS=':'
+    for item in $line ; do
+        case $item in
+            [fFoOuU]*)
+                ULINE=""
+                case $item in
+                    f*)
+                        # free desktop
+                        FG=${COLOR_FREE_FG}
+                        BG=${COLOR_FREE_BG}
+                        icon="\uf10c" # circle open
+                        ;;
+                    F*)
+                        # focused free desktop
+                        FG=${COLOR_FOCUSED_FREE_FG}
+                        BG=${COLOR_FOCUSED_FREE_BG}
+                        ULINE=${COLOR_UNDERLINE}
+                        icon="\uf10c" # circle open
+                        ;;
+                    o*)
+                        # occupied desktop
+                        FG=${COLOR_OCCUPIED_FG}
+                        BG=${COLOR_OCCUPIED_BG}
+                        icon="\uf111" # circle filled
+                        ;;
+                    O*)
+                        # focused occupied desktop
+                        FG=${COLOR_FOCUSED_OCCUPIED_FG}
+                        BG=${COLOR_FOCUSED_OCCUPIED_BG}
+                        ULINE=${COLOR_UNDERLINE}
+                        icon="\uf111" # circle filled
+                        ;;
+                    u*)
+                        # urgent desktop
+                        FG=${COLOR_URGENT_FG}
+                        BG=${COLOR_URGENT_BG}
+                        icon="\uf111" # circle filled
+                        ;;
+                    U*)
+                        # focused urgent desktop
+                        FG=${COLOR_FOCUSED_URGENT_FG}
+                        BG=${COLOR_FOCUSED_URGENT_BG}
+                        ULINE=${COLOR_UNDERLINE}
+                        icon="\uf111" # circle filled
+                        ;;
+                esac
+                if [ -z ${ULINE} ] ; then
+                    wm+="<span foreground=\"${FG}\" background=\"${BG}\">  ${icon}  </span>"
+                else
+                    wm+="<span foreground=\"${FG}\" background=\"${BG}\" underline=\"single\" underline_color=\"${ULINE}\">  ${icon}  </span>"
+                fi
+                ;;
+        esac
+    done
+    
+    echo -e ${wm}
+done

@@ -1,0 +1,7 @@
+#! /bin/sh
+
+. ~/.config/yabar/scripts/colors
+
+ICON="\uf042"
+BRIGHTNESS=$(xbacklight -get | cut -d '.' -f1)
+echo -e "<span foreground=\"${COLOR_FOREGROUND}\" background=\"${COLOR_BACKGROUND}\">${ICON} ${BRIGHTNESS}%</span>"

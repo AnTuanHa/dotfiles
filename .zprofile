@@ -1,12 +1,9 @@
 # BSPWM
-export PATH=$PATH:/home/an/.config/bspwm/panel
-export PANEL_FIFO="/tmp/panel-fifo"
 export XDG_CONFIG_HOME="/home/an/.config"
 export BSPWM_SOCKET="/tmp/bspwm-socket"
-export PANEL_WM_NAME="lemonpanel"
 
 # Ruby
-export PATH=$PATH:~/.gem/ruby/2.2.0/bin
+export PATH=$PATH:~/.gem/ruby/2.3.0/bin
 
 # IBus
 export GTK_IM_MODULE=ibus

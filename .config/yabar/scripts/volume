@@ -1,0 +1,14 @@
+#! /bin/sh
+
+. ~/.config/yabar/scripts/colors
+
+VOL_PERCENT=$(amixer get Master | tail -n 1 | grep -oP "[0-9]+%")
+IS_MUTED=$(amixer get Master | tail -n 1 | grep -oP "\[on\]")
+
+if [ -z ${IS_MUTED} ]; then
+	ICON="\uf026"
+else
+	ICON="\uf028"
+fi
+
+echo -e "<span foreground=\"${COLOR_FOREGROUND}\" background=\"${COLOR_BACKGROUND}\">${ICON} ${VOL_PERCENT}</span>"

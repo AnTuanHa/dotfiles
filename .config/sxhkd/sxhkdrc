@@ -29,13 +29,29 @@ Print
 alt + Print
 	maim --hidecursor -s -b 4 -c 0.333333,0.4,0.6,1.0 ~/$(date +%F-%T).png
 
+# Volume
+XF86AudioMute
+	amixer -q sset Master toggle
+
+XF86AudioLowerVolume
+	amixer -q sset Master 5%-
+
+XF86AudioRaiseVolume
+	amixer -q sset Master 5%+
+
+# Display brightness
+XF86MonBrightnessDown
+	xbacklight -dec 5%
 #
+XF86MonBrightnessUp
+	xbacklight -inc 5%
+
 # bspwm hotkeys
 #
 
 # Exit window manager back to tty
 super + shift + q
-	bspc quit && pkill bar && pkill panel && pkill panel_bar && pkill redshift && pkill compton && pkill dunst
+	bspc quit && pkill bar && pkill yabar && pkill redshift && pkill compton && pkill dunst
 
 # Close/Kill focused window
 super + shift + {_,ctrl + }c
