@@ -8,8 +8,8 @@ URxvt.scrollBar       : false
 Xft.antialias: 1
 Xft.autohint:  0
 Xft.dpi:       96
-Xft.hinting:   1
-Xft.hintstyle: hintfull
+Xft.hinting:   0
+Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xft.rgba:      rgb
 
