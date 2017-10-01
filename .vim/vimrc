@@ -4,36 +4,37 @@
 if &compatible
 	set nocompatible
 endif
+
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin('~/.vim/dein/')
+if dein#load_state('~/.vim/dein')
+	call dein#begin('~/.vim/dein')
+	call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
-call dein#add('Shougo/dein.vim')
+	" Only enable in nvim
+	" call dein#add('roxma/nvim-completion-manager')
+	" call dein#add('roxma/ncm-clang', { 'on_ft': ['c', 'cpp']})
 
-" NeoComplete requires vim to be compiled with lua support
-if has('lua')
-	call dein#add('Shougo/neocomplete.vim')
+	call dein#add('w0rp/ale')
+
+	call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0})
+
+	call dein#add('davidhalter/jedi-vim', { 'on_ft': 'python' })
+	call dein#add('tweekmonster/braceless.vim', { 'on_ft': ['python', 'yaml'] })
+	call dein#add('fatih/vim-go', { 'on_ft': 'go' })
+
+	call dein#add('lervag/vimtex', { 'on_ft': 'tex' })
+
+	call dein#add('godlygeek/tabular')
+	call dein#add('Raimondi/delimitMate')
+	call dein#add('tomtom/tcomment_vim')
+	call dein#add('tpope/vim-surround')
+	call dein#add('tpope/vim-repeat')
+	call dein#add('morhetz/gruvbox')
+
+	call dein#end()
+	call dein#save_state()
 endif
-" call dein#add('scrooloose/syntastic', { 'on_ft': 'c,cpp,python,lua,html,css'})
-
-call dein#add('neomake/neomake')
-
-call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0})
-
-call dein#add('Rip-Rip/clang_complete', { 'on_ft': 'c,cpp'})
-call dein#add('davidhalter/jedi-vim', { 'on_ft': 'python' })
-call dein#add('tweekmonster/braceless.vim', { 'on_ft': 'python' })
-
-call dein#add('lervag/vimtex', { 'on_ft': 'tex' })
-
-call dein#add('godlygeek/tabular')
-call dein#add('Raimondi/delimitMate')
-call dein#add('tomtom/tcomment_vim')
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-repeat')
-call dein#add('morhetz/gruvbox')
-
-call dein#end()
 
 if dein#check_install()
 	call dein#install()
@@ -100,6 +101,7 @@ autocmd FileType javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4 expand
 autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab textwidth=80 equalprg=indent\ -kr\ -i8\ -l80
 autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab textwidth=120
 autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " Show tabs and end of line characters
 set list
@@ -149,46 +151,6 @@ nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 " Plugins
 " -------
 
-" NeoComplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-let g:neocomplete#enable_auto_close_preview = 1
-
-let g:neocomplete#sources#dictionary#dictionaries = { 'default' : '' }
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-
-" Allow only words to be in the keyword
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion
-if !exists('g:neocomplete#force_omni_input_patterns')
-	let g:neocomplete#force_omni_input_patterns = {}
-endif
-
-let g:neocomplete#force_omni_input_patterns.c =
-			\ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-let g:neocomplete#force_omni_input_patterns.cpp =
-			\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-
-" Allow clang_complete and neocomplete to work together
-" let g:neocomplete#force_overwrite_completefunc = 1
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_default_keymappings = 0
-" let g:clang_use_library = 1
-
-" Syntastic
-" let g:syntastic_c_compiler = 'clang'
-" let g:syntastic_cpp_compiler = 'clang++'
-" let g:syntastic_cpp_compiler_options = '-std=c++11'
-
-" Neomake
-autocmd! BufWritePost * Neomake
-
 " FZF
 nnoremap <silent> <c-p> :FZF<CR>
 
@@ -197,25 +159,7 @@ autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#smart_auto_mappings = 0
-let g:neocomplete#force_omni_input_patterns.python =
-	\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
-" Vim-tex
-if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.tex =
-			\ '\v\\%('
-			\ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-			\ . '|hyperref\s*\[[^]]*'
-			\ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|%(include%(only)?|input)\s*\{[^}]*'
-			\ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-			\ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-			\ . ')'
-
-autocmd FileType python BracelessEnable +indent
+autocmd FileType python,yaml BracelessEnable +indent
 
 let g:tex_flavor='latex'
