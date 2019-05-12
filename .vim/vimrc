@@ -11,10 +11,6 @@ if dein#load_state('~/.vim/dein')
 	call dein#begin('~/.vim/dein')
 	call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
 
-	" Only enable in nvim
-	" call dein#add('roxma/nvim-completion-manager')
-	" call dein#add('roxma/ncm-clang', { 'on_ft': ['c', 'cpp']})
-
 	call dein#add('w0rp/ale')
 
 	call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0})
@@ -30,7 +26,7 @@ if dein#load_state('~/.vim/dein')
 	call dein#add('tomtom/tcomment_vim')
 	call dein#add('tpope/vim-surround')
 	call dein#add('tpope/vim-repeat')
-	call dein#add('morhetz/gruvbox')
+	call dein#add('dracula/vim')
 
 	call dein#end()
 	call dein#save_state()
@@ -95,7 +91,7 @@ set ruler
 set cursorline
 
 " Specific tabs, spaces and textwidth for certain file types
-autocmd FileType html,css setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+autocmd FileType html,css setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType java setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab textwidth=80 equalprg=indent\ -kr\ -i8\ -l80
@@ -128,8 +124,7 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 let g:matchparen_insert_timeout=5
 
 " Color Scheme
-set background=dark
-colorscheme gruvbox
+colorscheme dracula
 
 " Enable command-line completion
 set wildmenu
