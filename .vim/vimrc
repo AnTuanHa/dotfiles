@@ -124,6 +124,7 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 let g:matchparen_insert_timeout=5
 
 " Color Scheme
+set termguicolors
 colorscheme dracula
 
 " Enable command-line completion
