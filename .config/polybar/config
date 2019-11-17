@@ -1,0 +1,173 @@
+[colors]
+background = #282828
+foreground = #ebdbb2
+
+black = #282828
+red = #cc241d
+green = #98971a
+yellow = #d79921
+blue = #458588
+magenta = #b16286
+cyan = #689d6a
+white = #a89984
+
+black-alt = #928374
+red-alt = #fb4934
+green-alt = #b8bb26
+yellow-alt = #fabd2f
+blue-alt = #83a598
+magenta-alt = #d3869b
+cyan-alt = #8ec07c
+white-alt = #ebdbb2
+
+primary = #ffb52a
+secondary = #e60053
+alert = #cc241d
+
+[bar/monitor1]
+monitor = ${env:MONITOR:DVI-I-1}
+width = 100%:-20
+height = 28
+offset-x = 10
+offset-y = 10
+radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "SF Pro Display:style=Semibold:size=10;0"
+font-1 = "Noto Sans CJK JP:style=Bold:size=10;0"
+font-2 = "Wuncon Siji:pixelsize=10;1"
+
+modules-left = xwindow
+modules-center = bspwm
+modules-right = mpd date
+
+wm-restack = bspwm
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+locale = ja_JP.UTF-8
+
+[bar/monitor2]
+monitor = ${env:MONITOR:HDMI-0}
+width = 100%:-20
+height = 28
+offset-x = 10
+offset-y = 10
+radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "SF Pro Display:style=Semibold:size=10;0"
+font-1 = "Noto Sans CJK JP:style=Bold:size=10;0"
+font-2 = "Wuncon Siji:pixelsize=10;1"
+
+modules-left = xwindow
+modules-center = bspwm
+modules-right = mpd date
+
+wm-restack = bspwm
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+locale = ja_JP.UTF-8
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = false
+enable-scroll = false
+reverse-scroll = false
+
+label-focused = %name%
+label-focused-foreground = ${colors.yellow-alt}
+label-focused-underline= ${colors.yellow}
+label-focused-padding = 2
+
+label-occupied = %name%
+label-occupied-foreground = ${colors.blue-alt}
+label-occupied-padding = 2
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.red-alt}
+label-urgent-padding = 2
+
+label-empty = %name%
+label-empty-foreground = ${colors.black-alt}
+label-empty-padding = 2
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y年%m月%d日"
+
+time = %H:%M
+time-alt = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground}
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
