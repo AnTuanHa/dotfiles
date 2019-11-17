@@ -2,6 +2,7 @@
 # .zshrc Config File
 # ------------------
 
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval $(dircolors -b ~/.dircolors)
 
 # Colourize ls' output
@@ -13,6 +14,8 @@ alias grep="grep --color"
 
 # Use only one instance of gvim
 alias gvimrs="gvim --remote-silent"
+
+alias vim="nvim"
 
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m'   # begin blinking
@@ -110,74 +113,22 @@ setopt prompt_subst
 
 # Prompt
 PROMPT=""
-PROMPT+="%{$fg[green]%}%n"                     # Username
+PROMPT+="%{$fg[green]%}%n"                   # Username
 PROMPT+="%{$reset_color%}@"                  # @
 PROMPT+="%{$fg[blue]%}%m"                    # Hostname
 PROMPT+="%{$reset_color%} in"                # In
-PROMPT+="%{$fg[red]%} [%~]"                # Working Directory
+PROMPT+="%{$fg[red]%} [%~]"                  # Working Directory
 PROMPT+='%{$fg[yellow]%} ${vcs_info_msg_0_}' # Version Control System
 PROMPT+="
 "                                            # New Line
 PROMPT+="%{$reset_color%}> "                 # $
 
-# Vi mode, use bindkey -e for emacs mode
+# Emacs mode
 bindkey -e
-
-bindkey -a u undo
-bindkey -a '^R' redo
-
-# Allows you to use backspace in insert mode
-bindkey '^?' backward-delete-char
-
-# Same as above, but with CTRL H
-bindkey "^H" backward-delete-char
-
-# CTRL W to delete word
-bindkey "^W" backward-kill-word 
-
-# CTRL U to delete line
-bindkey "^U" backward-kill-line
-
-# Bring back Emacs keybindings in insert mode
-bindkey -M viins '^a'    beginning-of-line
-bindkey -M viins '^e'    end-of-line
-
-# Set / and ? to be more like vim, where / is searching forward and ? is
-# searching backwards
-bindkey -M vicmd '/' vi-history-search-forward
-bindkey -M vicmd '?' vi-history-search-backward
 
 # No delay going from insert mode to normal mode
 export KEYTIMEOUT=1
 
-# Vim mode indicatiors
-vim_ins_mode="-- INSERT --"
-vim_cmd_mode="-- NORMAL --"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-RPROMPT='${vim_mode}'
-RPROMPT2='${vim_mode}'
-
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-
-export MAVEN_OPTS="-Xmx8192m"
-source $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh
-
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
