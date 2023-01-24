@@ -136,6 +136,8 @@ bindkey '^x^e' edit-command-line
 # No delay going from insert mode to normal mode
 export KEYTIMEOUT=1
 
+plugins=(ssh-agent)
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
