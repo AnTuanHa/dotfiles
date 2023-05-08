@@ -1,0 +1,94 @@
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+" Highlight copied text
+Plug 'tpope/vim-commentary'
+" Surround
+Plug 'tpope/vim-surround'
+
+" Remap leader key from default backslash(\) to spacebar
+let mapleader=" "
+
+" Disable sounds
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" Improves redrawing
+set ttyfast
+
+" Don't update screen while executing a macro, register or
+" other commands that not have been typed
+set lazyredraw
+
+" Mouse
+set mouse=a   " Enable Mouse
+set mousehide " Hide mouse when typing
+
+" Allows you to edit other files without saving current file
+set hidden
+
+" No backup files
+set nobackup
+set noswapfile
+
+" Number of command lines to remember
+set history=1000
+
+" Allow to use backspace in insert mode
+set backspace=indent,eol,start
+
+" Adds line numbers to the left side of the editor
+set number
+
+" Adds column numbers to the bottom right of the editor
+set ruler
+
+" Highlight the line you are on
+set cursorline
+
+" Show tabs and end of line characters
+set list
+set listchars=tab:▸\ ,eol:¬
+
+" Add a visual vertical line 1 column after textwidth
+set colorcolumn=+1
+
+" Searching
+set hlsearch   " Highlight search terms
+set incsearch  " Show search matches as you type
+set ignorecase " Case-Insensitive when searching
+set smartcase  " Except if there's a capital letter
+
+" Time it takes to update gui while not doing anything (milliseconds)
+set updatetime=200
+
+" Fixes delay after pressing ESC and then O
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Fixes lag/delay when inserting parentheses and brackets in large files
+let g:matchparen_insert_timeout=5
+
+" Color Scheme
+set termguicolors
+
+" Enable command-line completion
+set wildmenu
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*/.git/**/*,*/.hg/**/*,*/.svn/**/*,*/tmp/*,*.so
+set wildignorecase
+set wildmode=list:full
+
+" Map CTRL + L to clear highlighting and then clear/redraw screen.
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+
+" Go to the implementation with the `gI` command
+nmap gI <Action>(GotoImplementation)
+
+" IdeaVim doesn't have changelist support yet
+nnoremap g; :action JumpToLastChange<Enter>
+nnoremap g, :action JumpToNextChange<Enter>
+
+" Fix IdeaVim's broken backwards and forwards jump list keybindings
+nnoremap <C-o> :action Back<Enter>
+nnoremap <C-i> :action Forward<Enter>
+
+nnoremap <leader>d :action GotoSuperMethod<Enter>
+
