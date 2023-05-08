@@ -6,14 +6,13 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval $(dircolors -b ~/.dircolors)
 
 # Colourize ls' output
-alias ls="ls -Fh --color=auto"
-alias ll="ls -Fhl --color=auto"
+# alias ls="ls -Fh --color=auto"
+# alias ll="ls -Fhl --color=auto"
+alias ls="exa"
+alias ll="exa --git --long --classify --group-directories-first --header --group"
 
 # Colourize grep's output
 alias grep="grep --color"
-
-# Use only one instance of gvim
-alias gvimrs="gvim --remote-silent"
 
 alias vim="nvim"
 
@@ -33,7 +32,7 @@ export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 alias less="less -x4RFsX"
 
 # Editor
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/nvim"
 
 # History Settings
 HISTFILE=~/.histfile
@@ -139,5 +138,3 @@ export KEYTIMEOUT=1
 plugins=(ssh-agent)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
