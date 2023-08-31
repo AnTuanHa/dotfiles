@@ -1,7 +1,7 @@
-Arch Linux + BSPWM
-==================
+# Dotfiles
 
-## Programs Used
-+ zsh - Shell
-+ neovim - Text Editor
-+ zellij - Terminal Multiplexer
+## Setup
+* alacritty - Terminal
+* fish - Shell
+* neovim - Text Editor
+* zellij - Terminal Multiplexer
