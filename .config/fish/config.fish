@@ -5,8 +5,8 @@ if status is-interactive
     set -U fish_prompt_pwd_dir_length 0
     set -g fish_autosuggestion_enabled 0
 
-    alias ls="exa"
-    alias ll="exa --git --long --classify --group-directories-first --header --group"
+    alias ls="eza"
+    alias ll="eza --git --long --classify --group-directories-first --header --group"
     alias vim="nvim"
 
     export EDITOR="nvim"
