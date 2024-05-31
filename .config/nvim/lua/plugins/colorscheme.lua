@@ -1,8 +1,17 @@
 return {
+  { "Mofiqul/dracula.nvim" },
   {
-    'Mofiqul/dracula.nvim',
-    config = function()
-      vim.cmd('colorscheme dracula')
-    end,
-  },
+    "LazyVim/LazyVim",
+    opts = function()
+      local dracula = require("dracula")
+      dracula.setup({
+        colors = {
+          comment = "#A0B5FF",
+        },
+      })
+      return {
+        colorscheme = "dracula",
+      }
+    end
+  }
 }
