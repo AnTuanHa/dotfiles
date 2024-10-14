@@ -4,9 +4,8 @@ return {
 
   -- Editor
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-  { "nvim-pack/nvim-spectre", enabled = false },
+  { "MagicDuck/grug-far.nvim", enabled = false },
   { "folke/flash.nvim", enabled = false },
-  { "lewis6991/gitsigns.nvim", enabled = false },
   { "folke/todo-comments.nvim", enabled = false },
 
   -- UI
