@@ -10,13 +10,15 @@ if status is-interactive
     alias vim="nvim"
 
     export EDITOR="nvim"
-    export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden"
-    export FZF_DEFAULT_OPTS="--color 16"
     # Some programs such as neovim expect this env var to be set
     export XDG_CONFIG_HOME="$HOME/.config"
 
     bind --user \cx\ce edit_command_buffer
 
-    eval $(dircolors -c ~/.dircolors)
     fish_config theme choose "Dracula Official"
+
+    set -gx ATUIN_NOBIND "true"
+    atuin init fish | source
+    bind \cr _atuin_search
+    bind -M insert \cr _atuin_search
 end
