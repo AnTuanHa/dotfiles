@@ -1,0 +1,10 @@
+import = ["~/.config/alacritty/dracula.toml"]
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "JetBrainsMono NFM"
+
+[window]
+option_as_alt = "Both"
