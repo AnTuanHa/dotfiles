@@ -9,11 +9,9 @@ return {
   { "folke/todo-comments.nvim", enabled = false },
 
   -- UI
-  { "rcarriga/nvim-notify", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
   -- Lualine slows down JDTLS
   { "nvim-lualine/lualine.nvim", enabled = false },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
   -- Noice interferes with ctags (tselect)
   { "folke/noice.nvim", enabled = false },
 

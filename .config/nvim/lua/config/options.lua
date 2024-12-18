@@ -93,3 +93,6 @@ vim.opt.clipboard = ""
 -- Turn on wrapping
 -- vim default is true
 vim.opt.wrap = true
+
+-- Disable animations
+vim.g.snacks_animate = false
