@@ -46,7 +46,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '>~' }
 
 -- Add a visual vertical line 1 column after textwidth
-vim.opt.colorcolumn = '+1'
+vim.opt.colorcolumn = '81,+1'
 
 -- Searching
 vim.opt.hlsearch = true   -- Highlight search terms
