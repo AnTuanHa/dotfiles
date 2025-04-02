@@ -5,3 +5,10 @@
 -- with `vim.api.nvim_create_autocmd`
 
 vim.o.winborder = "rounded"
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function()
+    vim.opt_local.textwidth = 120
+  end,
+})
