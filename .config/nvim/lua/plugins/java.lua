@@ -23,14 +23,44 @@ return {
 
       return vim.tbl_extend("force", opts, {
         cmd = cmd,
+        -- Disable main class scan for performance
+        -- https://github.com/LazyVim/LazyVim/pull/5391
+        dap_main = false,
+        -- https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line
         jdtls = {
           settings = {
             java = {
+              codeGeneration = {
+                hashCodeEquals = {
+                  useInstanceof = true,
+                  useJava7Objects = true,
+                },
+                useBlocks = true,
+              },
               format = {
                 settings = {
                   profile = "Default",
                   url = vim.fn.stdpath("config") .. "/javaFormat.xml",
                 },
+              },
+              inlayHints = {
+                parameterNames = {
+                  enabled = "all",
+                },
+              },
+              maxConcurrentBuilds = 16,
+              saveActions = {
+                organizeImports = true,
+              },
+              signatureHelp = { enabled = true, description = true },
+              sources = {
+                organizeImports = {
+                  starThreshold = 9999,
+                  staticStarThreshold = 9999,
+                },
+              },
+              symbols = {
+                includeSourceMethodDeclarations = true,
               },
             },
           },
