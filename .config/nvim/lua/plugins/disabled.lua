@@ -1,6 +1,6 @@
 return {
   -- Coding
-  { "echasnovski/mini.pairs", enabled = false },
+  { "nvim-mini/mini.pairs", enabled = false },
 
   -- Editor
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },

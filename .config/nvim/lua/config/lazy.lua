@@ -35,6 +35,9 @@ require("lazy").setup({
     enabled = false, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
+  headless = {
+    log = false, -- prevent io.write to stdout when remote-ui is detached
+  },
   performance = {
     rtp = {
       -- disable some rtp plugins

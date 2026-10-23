@@ -2,7 +2,7 @@ return {
   {
     "mfussenegger/nvim-jdtls",
     lazy = true,
-    ft = { "java", "xml" },
+    ft = { "java" },
     opts = function(_, opts)
       -- Since we're overriding the command, we need to copy whatever LazyVim
       -- passed in originally
@@ -10,8 +10,7 @@ return {
       -- https://github.com/LazyVim/LazyVim/blob/v14.14.0/lua/lazyvim/plugins/extras/lang/java.lua#L88-L93
       local cmd = { vim.fn.exepath("jdtls") }
       if LazyVim.has("mason.nvim") then
-        local mason_registry = require("mason-registry")
-        local lombok_jar = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
+        local lombok_jar = vim.fn.expand("$MASON/share/jdtls/lombok.jar")
         table.insert(cmd, string.format("--jvm-arg=-javaagent:%s", lombok_jar))
       end
 
@@ -20,6 +19,20 @@ return {
       --
       -- https://github.com/apache/maven-resolver/blob/maven-resolver-1.9.7/src/site/markdown/configuration.md
       table.insert(cmd, "-Daether.dependencyCollector.impl=bf")
+
+      -- nvim-dap doesn't provide a way to override the java debug server such
+      -- as .vscode/settings.json.
+      --
+      -- 1. java.debug.settings.showLogicalStructure=false
+      -- 2. java.debug.settings.showToString=false
+      --
+      -- These settings help improve performance when remote debugging
+      -- https://stackoverflow.com/questions/46292095/intelliji-idea-is-very-slow-in-debug-mode-and-it-is-running-perfectly-in-normal
+      --
+      -- A custom JAR file should be built with the default settings changed
+      -- https://github.com/microsoft/java-debug
+      --
+      -- https://github.com/microsoft/vscode-java-debug
 
       return vim.tbl_extend("force", opts, {
         cmd = cmd,
