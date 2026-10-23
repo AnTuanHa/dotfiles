@@ -9,16 +9,20 @@ if status is-interactive
     alias ll="eza --git --long --classify --group-directories-first --header --group"
     alias vim="nvim"
 
+    export SHELL="fish"
     export EDITOR="nvim"
     # Some programs such as neovim expect this env var to be set
     export XDG_CONFIG_HOME="$HOME/.config"
 
+    export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+    export MANPAGER='nvim +Man!'
+
+    export GPG_TTY=$(tty)
+
+    bind --erase --preset ctrl-e
     bind --user \cx\ce edit_command_buffer
 
     fish_config theme choose "Dracula Official"
 
-    set -gx ATUIN_NOBIND "true"
-    atuin init fish | source
-    bind \cr _atuin_search
-    bind -M insert \cr _atuin_search
+    fzf --fish | source
 end
